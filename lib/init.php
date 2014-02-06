@@ -17,7 +17,7 @@ function roots_setup() {
   add_image_size('category-thumb', 750, 9999); // 300px wide (and unlimited height)
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
-  add_theme_support('post-formats', array('review', 'gallery', 'faq', 'image', 'video', 'audio'));
+  add_theme_support('post-formats', array('aside', 'gallery', 'quote', 'status', 'image', 'video', 'audio'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');
