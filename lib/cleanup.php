@@ -105,6 +105,7 @@ function roots_body_class($classes) {
   // Add post/page slug
   if (is_single() || is_page() && !is_front_page()) {
     $classes[] = basename(get_permalink());
+    $classes[] = basename(str_replace('.php', '', get_page_template()));
   }
 
   // Remove unnecessary classes

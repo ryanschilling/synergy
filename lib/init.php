@@ -13,11 +13,11 @@ function roots_setup() {
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
   add_theme_support('post-thumbnails');
-  // set_post_thumbnail_size(150, 150, false);
-  // add_image_size('category-thumb', 300, 9999); // 300px wide (and unlimited height)
+  set_post_thumbnail_size(263, 263, false);
+  add_image_size('category-thumb', 750, 9999); // 300px wide (and unlimited height)
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
-  // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
+  add_theme_support('post-formats', array('review', 'gallery', 'faq', 'image', 'video', 'audio'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');
