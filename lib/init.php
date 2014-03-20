@@ -8,7 +8,12 @@ function roots_setup() {
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'roots'),
+    'primary_navigation' => __('Main Menu', 'roots'),
+    'utility_navigation' => __('Utility Menu', 'roots'),
+    'quicklinks_navigation_1' => __('Quicklinks - Left', 'roots'),
+    'quicklinks_navigation_2' => __('Quicklinks - Center', 'roots'),
+    'quicklinks_navigation_3' => __('Quicklinks - Right', 'roots'),
+    'social_navigation' => __('Social Icons', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)

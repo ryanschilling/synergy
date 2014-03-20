@@ -3,6 +3,7 @@
  */
 
 @import "font-awesome/font-awesome.less";
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
 @import "bootstrap/bootstrap.less";
 
 /* ==========================================================================
@@ -17,8 +18,154 @@ body { }
    Header
    ========================================================================== */
 
-header{
+.header{
    .navbar;
+   background: url('../img/header-tile.png') repeat-x top center;
+
+   .navbar-header{
+      background: url('../img/header-bg.png') no-repeat top center;
+      height: 133px;
+      width: 100%;
+
+      .logo{
+         .navbar-brand;
+         background: url('../img/header-logo.png') no-repeat;
+         width: 238px;
+         height: 74px;
+         position: relative;
+         top: 20px;
+
+         span{ visibility: hidden; }
+      }
+
+      .social,
+      .utility{
+         float: right;
+         position: relative;
+         top: 10px;
+
+         > ul{ 
+            .nav;
+            .nav-pills;
+
+            > li a{ font-weight: 600; }
+         }
+      }
+
+      .social{
+
+         a{
+            visibility: hidden;
+            .fa;
+            .fa-fw;
+            .fa-2x;
+
+            &:before{
+               .fa;
+               .fa-fw;
+               visibility: visible;
+               margin-left: -10px;
+            }
+         }
+
+         .menu-facebook a:before{ content: "\f082"; color: rgb(59, 89, 152); }
+         .menu-twitter a:before{ content: "\f081"; color: rgb(0, 172, 237); }
+         .menu-linkedin a:before{ content: "\f08c"; color: rgb(0, 123, 182); }
+         .menu-google a:before{ content: "\f0d4"; color: rgb(211, 75, 57); }
+         .menu-youtube a:before{ content: "\f166"; color: rgb(187, 0, 0); }
+      }
+
+      .utility{
+         .menu-contact-us{
+            
+            > a{
+               border-color: transparent;
+               border: 1px solid transparent;
+
+               > b.caret{ display: none; }
+            }
+
+            &.open{
+               > a,
+               > a:focus,
+               > a:hover{
+                     color: @link-hover-color;
+                     background: #f4f4f4;
+                     .border-bottom-radius(0);
+                     border: 1px solid #fff;
+                     border-color: #fff;
+                     border-bottom: none;
+                     z-index: 1001;
+                     position: relative;
+               }
+            }
+
+            > ul{
+               right: 0;
+               left: auto;
+               float: right;
+               border: 1px solid #fff;
+               background: #f4f4f4;
+               .border-top-radius(0);
+               .border-left-radius(@border-radius-base);
+               margin-top: -1px;
+
+               > li > a{
+                  color: @link-color;
+                  padding: 8px 15px;
+
+                  &:hover,
+                  &:focus,
+                  &:active{
+                     color: @link-hover-color;
+                     background: #fff;
+                  }
+
+                  &:before{
+                     .fa;
+                     .fa-fw;
+                     margin-right: 6px;
+                     font-size: 18px;
+                  }
+               }
+
+               > li + li > a{
+                  border-top: 1px solid #e7e7e7;
+               }
+
+               > li.menu-call-210-get-voip > a:before{ content: "\f095"; color: @link-color; }
+               > li.menu-request-a-callback > a:before{ content: "\f086"; color: #6a5082; }
+               > li.menu-request-a-quote > a:before{ content: "\f085"; color: #079700; }
+               > li.menu-check-for-service > a:before{ content: "\f046"; color: #c90000; }
+               > li.menu-submit-a-trouble-ticket > a:before{ content: "\f145"; color: #c90000; }
+               > li.menu-share-a-review > a:before{ content: "\f005"; color: #d0b500; }
+
+               > li.menu-contact-us-online{
+                  padding: 5px 15px 8px 15px;
+
+                  > a{ .btn; .btn-block; .btn-primary; font-weight: 600; font-size: 17px; }
+               }
+            }
+         }
+
+         > ul{
+            > li > a:hover,
+            > li > a:active,
+            > li > a:focus{ background: none; outline: none; color: @link-hover-color; }
+            > li.active > a{ background: none; color: @link-color; }
+            > li.active > a:hover,
+            > li.active > a:active,
+            > li.active > a:focus{ background: none; outline: none; color: @link-hover-color; }
+         }
+      }
+   }
+
+   .menu{
+      background: url('../img/menu-tile.png') repeat-x;
+      height: 86px;
+
+      ul{ .nav; .navbar-nav; }
+   }
 }
 
 
