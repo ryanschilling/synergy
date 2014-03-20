@@ -35,6 +35,8 @@ body { }
          position: relative;
          top: 20px;
 
+         &:focus{ outline: none; }
+
          span{ visibility: hidden; }
       }
 
@@ -164,7 +166,143 @@ body { }
       background: url('../img/menu-tile.png') repeat-x;
       height: 86px;
 
-      ul{ .nav; .navbar-nav; }
+      nav{
+         padding-left: 0;
+         padding-right: 0;
+
+         > ul{
+            .nav; .navbar-nav;
+            border-right: 3px groove #888;
+            border-right: 3px groove rgba(122, 122, 122, 0.44);
+            width: 100%;
+            
+            > li{
+               border-left: 3px groove #888;
+               border-left: 3px groove rgba(122, 122, 122, 0.44);
+               height: 80px;
+            }
+
+            > li > a{
+               color: #b4b4b4;
+               font-size: 22px;
+               padding: 22px 58px;
+               line-height: 35px;
+               font-weight: 600;
+               text-shadow: -1px -1px 0 #3b3b3b;
+
+               > b.caret{ display: none; }
+
+               &:hover,
+               &:active,
+               &:focus{
+                  color: #fff;
+                  background: #3b3b3b;
+                  background: rgba(0,0,0,.1);
+               }
+            }
+
+            > li.open > a,
+            > li.open.active > a{
+               border-color: #fff;
+               border-top: 6px solid #c90000;
+               position: relative;
+               top: -6px;
+               .border-top-radius(@border-radius-base);
+               background: #f4f4f4;
+               color: @link-hover-color;
+               text-shadow: none;
+               z-index: 1001;
+            }
+
+            > li.active > a{
+               color: #fff;
+               background: #3b3b3b;
+               background: rgba(0,0,0,.1);
+               border-color: #fff;
+               border-top: 6px solid #c90000;
+               position: relative;
+               top: -6px;
+               .border-top-radius(@border-radius-base);
+            }
+
+            > li.dropdown > ul.dropdown-menu{
+               border-color: #fff;
+               border-top: none;
+               background: #f4f4f4;
+               .border-top-radius(0);
+               margin-top: -1px;
+            }
+
+            > li.menu-search > a{
+               visibility: hidden;
+               .fa;
+               .fa-fw;
+               font-size: 28px;
+               line-height: 35px;
+
+               &:before{
+                  .fa;
+                  .fa-fw;
+                  margin-left: -15px;
+                  content: "\f002";
+                  visibility: visible;
+               }
+            }
+         }
+      }
+   }
+
+   .banner{
+      .carousel;
+      background: url('../img/banner-tile.png') repeat-x top center;
+      height: 367px;
+
+      .carousel-control{
+
+         span{
+            top: 50%;
+            position: absolute;
+            margin-top: -20px;
+         }
+
+         &.left{ text-align: left; }
+         &.left > span { left: 20px; }
+         &.right{ text-align: right; }
+         &.right > span { right: 20px; }
+      }
+      
+      .item{
+         background: url('../img/banner-bg.png') no-repeat top center transparent;
+         height: 367px;
+      }
+
+      .jumbotron{
+         background: url('../img/banner-bg-hospital.png') no-repeat top center transparent;
+         height: 367px;
+         box-shadow: none;
+         .border-top-radius(0);
+         .border-bottom-radius(0);
+         padding: 0;
+         margin-top: 0;
+
+         h1{
+            font-weight: 600;
+            font-size: 48px;
+            color: #fff;
+            margin-top: 0;
+            padding-top: 60px;
+            text-shadow: 2px 2px 6px rgb(12, 48, 86);
+            text-shadow: 2px 2px 6px rgba(12, 48, 86, 0.75);
+
+            + p{
+               color: @link-hover-color;
+               font-weight: normal;
+               font-size: 28px;
+               text-shadow: 2px 2px 6px rgb(12, 48, 86);
+               text-shadow: 2px 2px 6px rgba(12, 48, 86, 0.75);
+            }
+         }
+      }
    }
 }
 
