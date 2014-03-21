@@ -219,6 +219,12 @@ body {
                color: @link-hover-color;
                text-shadow: none;
                z-index: 1001;
+
+               &:hover,
+               &:active,
+               &:focus{
+                  background: #f4f4f4;
+               }
             }
 
             > li.active > a{
@@ -238,6 +244,29 @@ body {
                background: #f4f4f4;
                .border-top-radius(0);
                margin-top: -1px;
+               min-width: 100%;
+
+               > li > a{
+                  padding: 8px 15px;
+                  color: @link-color;
+                  font-size: 16px;
+                  font-weight: 600;
+
+                  &:hover{
+                     color: @link-hover-color;
+                     background: #fff;
+                  }
+               }
+
+               > li.active > a{
+                  background: none;
+                  color: @link-color;
+
+                  &:hover{
+                     color: @link-hover-color;
+                     background: #fff;
+                  }
+               }
             }
 
             > li.menu-search > a{
@@ -273,13 +302,13 @@ body {
          span{
             top: 50%;
             position: absolute;
-            margin-top: -20px;
+            margin-top: -35px;
          }
 
          &.left{ text-align: left; }
-         &.left > span { left: 20px; }
+         &.left > span { left: 30px; }
          &.right{ text-align: right; }
-         &.right > span { right: 20px; }
+         &.right > span { right: 30px; }
       }
       
       .item{
@@ -295,6 +324,8 @@ body {
          .border-bottom-radius(0);
          padding: 0;
          margin-top: 0;
+         padding-left: 50px;
+         padding-right: 50px;
 
          h1{
             font-weight: 600;
@@ -364,6 +395,7 @@ body {
 .footer {
    background: url('../img/menu-tile.png') repeat-x bottom center;
    border-top: 6px solid #fff;
+   margin-top: 30px;
 
    .widgets{
       .make-row();
@@ -374,15 +406,26 @@ body {
       .widget_customer_review{
          .make-sm-column(6);
          background: url('../img/widget-bg-network.png') no-repeat top right;
-         padding-top: 17px;
-         padding-bottom: 17px;
+         padding-top: 15px;
+         min-height: 193px;
 
-         blockquote{ border-left: 6px solid #5E5E5E; padding-top: 0; padding-bottom: 0; margin-top: 20px; }
+         blockquote{ border-left: 6px solid #5E5E5E; padding-top: 0; padding-bottom: 0; margin-top: 15px; margin-bottom: 0; }
          blockquote > p{ font-size: 15px; }
          blockquote > footer{ font-weight: 600; }
 
          .review{ position: relative; }
          .review .type{ position: absolute; top: -45px; right: 0; font-size: 14px; }
+      }
+
+      .widget_subscribe_form{
+         .make-sm-column(6);
+         background: url('../img/widget-bg-postmark.png') no-repeat top left;
+         padding-top: 15px;
+         min-height: 193px;
+
+         h3{ margin-bottom: 15px; padding-left: 20px; }
+         p{ font-size: 15px; padding-left: 20px; }
+         form{ padding-left: 20px; }
       }
    }
 
@@ -460,6 +503,14 @@ body {
                &:focus{
                   background: none;
                }
+            }
+
+            > li.active > a,
+            > li.active > a:hover,
+            > li.active > a:focus,
+            > li.active > a:active{
+               background: none;
+               color: @link-color;
             }
          }
 

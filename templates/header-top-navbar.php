@@ -77,10 +77,10 @@
 
     <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-      <span class="fa fa-2x fa-chevron-left"></span>
+      <span class="fa fa-3x fa-chevron-circle-left"></span>
     </a>
     <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-      <span class="fa fa-2x fa-chevron-right"></span>
+      <span class="fa fa-3x fa-chevron-circle-right"></span>
     </a>
   </div>
 
