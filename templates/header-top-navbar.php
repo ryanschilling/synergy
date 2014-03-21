@@ -46,7 +46,7 @@
   </div>
 
   <?php if(is_front_page()): ?>
-  <div id="carousel-example-generic" class="banner slide" data-ride="carousel">
+  <div id="carousel-home" class="banner slide" data-ride="carousel">
 
       <ol class="carousel-indicators">
         <?php for($x=0;$x<3;$x++): ?>
@@ -75,6 +75,21 @@
         <span class="fa fa-3x fa-chevron-circle-right"></span>
       </a>
 
+  </div>
+  <?php else: ?>
+  <div id="carousel-page" class="banner slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="container">
+          <div class="jumbotron" style="background-image: url('<?=$img['url']?>');">
+            <h1><?=roots_title()?></h1>
+            <?php if(get_field('page_subtitle')): ?>
+              <p><?=html_entity_decode(get_field('page_subtitle'))?></p>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <?php endif; ?>
 

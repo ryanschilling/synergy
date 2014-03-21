@@ -6,12 +6,14 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
 @import "bootstrap/bootstrap.less";
 
+
+
 /* ==========================================================================
    Base
    ========================================================================== */
 
 body {
-   background: url('../img/body-tile.png') #eaebeb top center;
+   background: url('../img/body-tile.jpg') #eaebeb top center;
    color: #5e5e5e;
 }
 
@@ -23,12 +25,12 @@ body {
 
 .header{
    .navbar;
-   background: url('../img/header-tile.png') repeat-x top center;
+   background: url('../img/header-tile.jpg') repeat-x top center;
    margin-bottom: 30px;
    border: 0;
 
    .navbar-header{
-      background: url('../img/header-bg.png') no-repeat top center;
+      background: url('../img/header-bg.jpg') no-repeat top center;
       height: 133px;
       width: 100%;
 
@@ -174,11 +176,14 @@ body {
       }
    }
 
+
+
+
 /* ==========================================================================
    Menu
    ========================================================================== */
    .menu{
-      background: url('../img/menu-tile.png') #434343 repeat-x;
+      background: url('../img/menu-tile.jpg') #434343 repeat-x;
       height: 86px;
 
       nav{
@@ -296,14 +301,22 @@ body {
       }
    }
 
+
+
+
 /* ==========================================================================
    Banner
    ========================================================================== */
    .banner{
       .carousel;
-      background: url('../img/banner-tile.png') repeat-x top center;
-      height: 373px;
+      background: url('../img/banner-tile.jpg') repeat-x top center;
       border-bottom: 6px solid #fff;
+      
+      &#carousel-home,
+      &#carousel-home .item,
+      &#carousel-home .jumbotron{ height: 373px; }
+      &#carousel-home .jumbotron{ padding-left: 65px; padding-right: 65px; }
+      &#carousel-page .jumbotron{ margin-bottom: 45px; }
 
       .carousel-control{
          color: @link-hover-color;
@@ -323,20 +336,16 @@ body {
       }
       
       .item{
-         background: url('../img/banner-bg.png') no-repeat top center transparent;
-         height: 367px;
+         background: url('../img/banner-bg.jpg') no-repeat top center transparent;
       }
 
       .jumbotron{
          background: no-repeat top center transparent;
-         height: 367px;
          box-shadow: none;
          .border-top-radius(0);
          .border-bottom-radius(0);
          padding: 0;
          margin-top: 0;
-         padding-left: 65px;
-         padding-right: 65px;
 
          h1{
             font-weight: 600;
@@ -360,6 +369,8 @@ body {
       }
    }
 }
+
+
 
 
 /* ==========================================================================
@@ -403,14 +414,23 @@ body {
 .btn > .fa{ opacity: 0.5; }
 .btn:hover > .fa{ opacity: 1; }
 
+
+
+
 /* ==========================================================================
    Primary Content
    ========================================================================== */
 
-.main { }
+.main {
+
+   p{
+      font-size: 15px;
+   }
+}
 
 /* Gallery Shortcode */
 .gallery-row { padding: 15px 0; }
+
 
 
 
@@ -418,7 +438,10 @@ body {
    Sidebar
    ========================================================================== */
 
-.sidebar { }
+.sidebar {
+
+}
+
 
 
 
@@ -434,12 +457,13 @@ body {
 
 
 
+
 /* ==========================================================================
    Footer
    ========================================================================== */
 
 .footer {
-   background: url('../img/menu-tile.png') repeat-x bottom center;
+   background: url('../img/menu-tile.jpg') repeat-x bottom center;
    border-top: 6px solid #fff;
    margin-top: 30px;
    overflow: hidden;
@@ -448,12 +472,12 @@ body {
    .widgets{
       border-bottom: 6px solid #fff;
       margin-bottom: 20px;
-      background: url('../img/widget-tile.png') #d6d6d6 repeat-x top center;
+      background: url('../img/widget-tile.jpg') #d6d6d6 repeat-x top center;
 
       .widget_customer_review{
          .make-xs-column(12);
          .make-sm-column(6);
-         background: url('../img/widget-bg-network.png') no-repeat top right;
+         background: url('../img/widget-bg-network.jpg') no-repeat top right;
          padding-top: 15px;
          min-height: 193px;
 
@@ -468,7 +492,7 @@ body {
       .widget_subscribe_form{
          .make-xs-column(12);
          .make-sm-column(6);
-         background: url('../img/widget-bg-postmark.png') no-repeat top left;
+         background: url('../img/widget-bg-postmark.jpg') no-repeat top left;
          padding-top: 15px;
          min-height: 193px;
 
@@ -477,6 +501,9 @@ body {
          form{ padding-left: 20px; }
       }
    }
+
+
+
 
 /* ==========================================================================
    Recent Post
@@ -492,6 +519,9 @@ body {
          font-weight: 300;
       }
    }
+
+
+
 
 /* ==========================================================================
    Quick Links
@@ -578,6 +608,9 @@ body {
       }
    }
 
+
+
+
 /* ==========================================================================
    Legal
    ========================================================================== */
@@ -643,6 +676,7 @@ body {
 
 
 
+
 /* ==========================================================================
    WordPress Generated Classes
    See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
@@ -655,8 +689,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
 
 
+
 /* ==========================================================================
-   Media Queries
+   Media Queries: Mobile
    ========================================================================== */
 
 @media (max-width: @screen-xs-max) {
@@ -666,7 +701,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .container{ padding: 0; }
    .header .navbar-header .logo{ float: none; clear: both; width: 100%; top: 5px; background-position: center center; display:block; padding: 0; margin-bottom: 20px; }
    .header .navbar-header .navbar-toggle{ position: relative; top: 3px; margin-right: 0; }
-   .header .navbar-header .call-number{ text-align: center; clear: both; float: none; padding-top:3px; padding-bottom:15px; color: #b4b4b4; text-shadow: -1px -1px 0px #3b3b3b; background: url('../img/menu-tile.png') repeat-x bottom center;
+   .header .navbar-header .call-number{ text-align: center; clear: both; float: none; padding-top:3px; padding-bottom:15px; color: #b4b4b4; text-shadow: -1px -1px 0px #3b3b3b; background: url('../img/menu-tile.jpg') repeat-x bottom center;
       a{ color: #fff; }
    }
    .header .navbar-header .utility{ clear: both; float: none; top: 0; width: 100%;
@@ -706,14 +741,16 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .banner .carousel-indicators{ margin-bottom: 0; }
    .header .banner .item{ height: auto; }
    .header .banner .jumbotron{ padding-left: 15px; padding-right: 15px; text-align: center; height: auto; padding-bottom: 50px; margin-bottom: 0; }
+   .header .banner#carousel-page .jumbotron{ margin-bottom: 0; padding-bottom: 30px; }
    .header .banner .jumbotron h1{ font-size: 36px; padding-top: 30px; }
    .header .banner .jumbotron h1 + p { font-size: 22px; line-height: 24px; }
    .header .banner .jumbotron .btn-lg{ font-size: 18px; }
 
    // Footer widgets
    .footer .widgets section + section{ border-top: 6px solid #fff; }
+   .footer .widgets .widget_customer_review .review{ margin-bottom: 20px; }
    .footer .widgets .widget_customer_review,
-   .footer .widgets .widget_subscribe_form{ padding-left: 35px; padding-right: 30px; }
+   .footer .widgets .widget_subscribe_form{ padding-left: 15px; padding-right: 15px; }
    .footer .widgets .widget_customer_review h3{ margin-top: 15px; }
    .footer .widgets .widget_customer_review .review .type{ display: none; }
    .footer .widgets .widget_subscribe_form{
@@ -755,6 +792,12 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    }
 }
 
+
+
+
+/* ==========================================================================
+   Media Queries: Tablet
+   ========================================================================== */
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
 
    // Header
@@ -763,9 +806,21 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .navbar-header .utility > ul > li > a{ padding: 10px 10px; }
    
    // Banner
-   .header .banner .jumbotron{ padding-left: 65px; padding-right: 65px; }
+   .header .banner#carousel-home .jumbotron{ padding-left: 65px; padding-right: 65px; }
    .header .banner .jumbotron h1{ padding-top: 30px; }
    
+   // Footer widgets
+   .footer .widgets .widget_customer_review,
+   .footer .widgets .widget_subscribe_form{ background-size: 100% auto; padding-left: 0; }
+   .footer .widgets .widget_customer_review .review .type{ display: none; }
+   .footer .widgets .widget_subscribe_form{
+      h3, p, form{ padding-left: 0; }
+      p span{ display: block; }
+      form .form-group > i.fa{ display: none; }
+      form .form-group:nth-child(2) input{ margin-left: 0 !important; }
+      form .form-group input{ width: 130px !important; }
+   }
+
    // Footer legal
    .footer .legal .copyright .links > ul > li > a{ padding: 10px 5px; }
 
@@ -795,14 +850,37 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    }
 }
 
-@media (min-width: @screen-sm-min) { }
 
+
+
+/* ==========================================================================
+   Media Queries: Tablet, Laptop, Desktop
+   ========================================================================== */
+@media (min-width: @screen-sm-min) {
+
+   .main{ float: right; }
+   .sidebar{ float: left; }
+
+}
+
+
+
+
+/* ==========================================================================
+   Media Queries: Laptop, Desktop
+   ========================================================================== */
 @media (min-width: @screen-md-min) {
 
    // Menu
    .header .menu nav > ul > li > a{ font-size: 22px; padding: 22px 41px; }
 }
 
+
+
+
+/* ==========================================================================
+   Media Queries: Desktop
+   ========================================================================== */
 @media (min-width: @screen-lg-min) {
    
    // Menu
