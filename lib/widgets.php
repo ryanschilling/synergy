@@ -23,29 +23,28 @@ function roots_widgets_init() {
   ));
 
   // Widgets
-  //register_widget('Roots_Vcard_Widget');
+  register_widget('Customer_Review_Widget');
 }
 add_action('widgets_init', 'roots_widgets_init');
 
 /**
- * Example vCard widget
+ * Customer Review Widget
  */
-class Roots_Vcard_Widget extends WP_Widget {
+class Customer_Review_Widget extends WP_Widget {
   private $fields = array(
-    'title'          => 'Title (optional)',
-    'street_address' => 'Street Address',
-    'locality'       => 'City/Locality',
-    'region'         => 'State/Region',
-    'postal_code'    => 'Zipcode/Postal Code',
-    'tel'            => 'Telephone',
-    'email'          => 'Email'
+    'title'          => 'Title',
+    'google'         => 'Google+',
+    'facebook'       => 'Facebook',
+    'twitter'        => 'Twitter',
+    'linkedin'       => 'LinkedIn',
+    'website'        => 'Website'
   );
 
   function __construct() {
-    $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
+    $widget_ops = array('classname' => 'widget_customer_review', 'description' => __('Use this widget to show a customer review', 'roots'));
 
-    $this->WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
-    $this->alt_option_name = 'widget_roots_vcard';
+    $this->WP_Widget('widget_customer_review', __('Customer Review', 'roots'), $widget_ops);
+    $this->alt_option_name = 'widget_customer_review';
 
     add_action('save_post', array(&$this, 'flush_widget_cache'));
     add_action('deleted_post', array(&$this, 'flush_widget_cache'));
@@ -53,7 +52,7 @@ class Roots_Vcard_Widget extends WP_Widget {
   }
 
   function widget($args, $instance) {
-    $cache = wp_cache_get('widget_roots_vcard', 'widget');
+    $cache = wp_cache_get('widget_customer_review', 'widget');
 
     if (!is_array($cache)) {
       $cache = array();
@@ -71,7 +70,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     ob_start();
     extract($args, EXTR_SKIP);
 
-    $title = apply_filters('widget_title', empty($instance['title']) ? __('vCard', 'roots') : $instance['title'], $instance, $this->id_base);
+    $title = apply_filters('widget_title', empty($instance['title']) ? __('Customer Review', 'roots') : $instance['title'], $instance, $this->id_base);
 
     foreach($this->fields as $name => $label) {
       if (!isset($instance[$name])) { $instance[$name] = ''; }
@@ -82,23 +81,56 @@ class Roots_Vcard_Widget extends WP_Widget {
     if ($title) {
       echo $before_title, $title, $after_title;
     }
-  ?>
-    <p class="vcard">
-      <a class="fn org url" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a><br>
-      <span class="adr">
-        <span class="street-address"><?php echo $instance['street_address']; ?></span><br>
-        <span class="locality"><?php echo $instance['locality']; ?></span>,
-        <span class="region"><?php echo $instance['region']; ?></span>
-        <span class="postal-code"><?php echo $instance['postal_code']; ?></span><br>
-      </span>
-      <span class="tel"><span class="value"><?php echo $instance['tel']; ?></span></span><br>
-      <a class="email" href="mailto:<?php echo $instance['email']; ?>"><?php echo $instance['email']; ?></a>
-    </p>
-  <?php
+
+    query_posts( 'post_type=review&posts_per_page=3' );
+    if (have_posts()) :
+      while (have_posts()) :
+        the_post();
+        echo '<blockquote class="review">';
+        switch(get_field('review_type'))
+        {
+          case 'facebook':
+            echo '<a href="'.$instance['facebook'].'" target="_blank" class="type"><i class="fa fa-fw fa-facebook"></i> /SynergyTelecom</a>';
+            break;
+          case 'linkedin':
+            echo '<a href="'.$instance['linkedin'].'" target="_blank" class="type"><i class="fa fa-fw fa-linkedin"></i> Synergy Telecom, Inc.</a>';
+            break;
+          case 'google':
+            echo '<a href="'.$instance['google'].'" target="_blank" class="type"><i class="fa fa-fw fa-googleplus"></i> Google+</a>';
+            break;
+          case 'twitter':
+            echo '<a href="'.$instance['twitter'].'" target="_blank" class="type"><i class="fa fa-fw fa-twitter"></i> @SynergyTelecom</a>';
+            break;
+          case 'website':
+          case 'other':
+          default:
+            echo '<a href="'.$instance['website'].'" target="_blank" class="type"><i class="fa fa-fw fa-globe"></i> SynergyTele.com</a>';
+            break;
+        }
+        echo '<p>';
+        echo substr(get_the_excerpt(), 0, 166) . '... ';
+        echo '</p>';
+        echo '<footer>';
+        if(get_field('review_source')):
+          echo '<a target="_blank" href="'.get_field('review_source').'">';
+        endif;
+        echo get_field('review_author');
+        if(get_field('review_company')):
+          echo ' (<em>' . get_field('review_company') .'</em>)';
+        endif;
+        if(get_field('review_source')):
+          echo '</a>';
+        endif;
+        echo '</footer>';
+        echo '</blockquote>';
+      endwhile;
+    endif;
+    rewind_posts();
+    
     echo $after_widget;
 
     $cache[$args['widget_id']] = ob_get_flush();
-    wp_cache_set('widget_roots_vcard', $cache, 'widget');
+    wp_cache_set('widget_customer_review', $cache, 'widget');
   }
 
   function update($new_instance, $old_instance) {
@@ -108,15 +140,15 @@ class Roots_Vcard_Widget extends WP_Widget {
 
     $alloptions = wp_cache_get('alloptions', 'options');
 
-    if (isset($alloptions['widget_roots_vcard'])) {
-      delete_option('widget_roots_vcard');
+    if (isset($alloptions['widget_customer_review'])) {
+      delete_option('widget_customer_review');
     }
 
     return $instance;
   }
 
   function flush_widget_cache() {
-    wp_cache_delete('widget_roots_vcard', 'widget');
+    wp_cache_delete('widget_customer_review', 'widget');
   }
 
   function form($instance) {
@@ -131,3 +163,4 @@ class Roots_Vcard_Widget extends WP_Widget {
     }
   }
 }
+

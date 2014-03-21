@@ -367,11 +367,23 @@ body {
 
    .widgets{
       .make-row();
-      padding-top: 30px;
-      padding-bottom: 30px;
       border-bottom: 6px solid #fff;
       margin-bottom: 20px;
       background: url('../img/widget-tile.png') #d6d6d6 repeat-x top center;
+
+      .widget_customer_review{
+         .make-sm-column(6);
+         background: url('../img/widget-bg-network.png') no-repeat top right;
+         padding-top: 17px;
+         padding-bottom: 17px;
+
+         blockquote{ border-left: 6px solid #5E5E5E; padding-top: 0; padding-bottom: 0; margin-top: 20px; }
+         blockquote > p{ font-size: 15px; }
+         blockquote > footer{ font-weight: 600; }
+
+         .review{ position: relative; }
+         .review .type{ position: absolute; top: -45px; right: 0; font-size: 14px; }
+      }
    }
 
 /* ==========================================================================

@@ -1,7 +1,9 @@
 <footer class="footer" role="contentinfo">
   <div class="widgets">
 		<div class="container">
-			<?php dynamic_sidebar('sidebar-widgets'); ?>
+			<div class="row">
+				<?php dynamic_sidebar('sidebar-widgets'); ?>
+			</div>
 		</div>
   </div>
   <div class="container">
