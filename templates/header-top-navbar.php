@@ -2,6 +2,10 @@
   
   <div class="container">
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <i class="fa fa-2x fa-fw fa-bars"></i>
+      </button>
       <nav class="social">
         <?php
           if (has_nav_menu('social_navigation')) :
@@ -16,11 +20,16 @@
           endif;
         ?>
       </nav>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <i class="fa fa-fw fa-bars"></i>
-      </button>
+
       <a class="logo" href="<?php echo home_url(); ?>/" title="<?php bloginfo('name'); ?>"><span><?php bloginfo('name'); ?></span></a>
+
+      <div class="call-number">
+        <h3><i class="fa fa-phone"></i> Call <a style="font-weight: 700" href="tel:+12104388647">(210) GET-VOIP</a>
+        <span class="hidden-xs">
+          <small>OR</small>
+          <a href="/support/request-a-quote" class="btn btn-lg btn-danger" style="font-weight: 600">Order Online <i class="fa fa-fw fa-chevron-circle-right"></i></a></h3>
+        </span>
+      </div>
     </div>
   </div>
 
@@ -36,52 +45,37 @@
     </div>
   </div>
 
+  <?php if(is_front_page()): ?>
   <div id="carousel-example-generic" class="banner slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <div class="container">
-          <div class="jumbotron">
-            <h1>High Quality VoIP<br>Business Communications</h1>
-            <p>It’s all we do and we’re <em>really</em> good at it.</p>
-            <p><a class="btn btn-danger btn-lg" role="button">Is VOIP right for you? <i class="fa fa-fw fa-chevron-circle-right"></i></a></p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="container">
-          <div class="jumbotron">
-            <h1>High Quality VoIP<br>Business Communications</h1>
-            <p>It’s all we do and we’re <em>really</em> good at it.</p>
-            <p><a class="btn btn-danger btn-lg" role="button">Is VOIP right for you? <i class="fa fa-fw fa-chevron-circle-right"></i></a></p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="container">
-          <div class="jumbotron">
-            <h1>High Quality VoIP<br>Business Communications</h1>
-            <p>It’s all we do and we’re <em>really</em> good at it.</p>
-            <p><a class="btn btn-danger btn-lg" role="button">Is VOIP right for you? <i class="fa fa-fw fa-chevron-circle-right"></i></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <ol class="carousel-indicators">
+        <?php for($x=0;$x<3;$x++): ?>
+          <li data-target="#carousel-example-generic" data-slide-to="<?=$x?>" class="<?=$x==0 ? 'active' : ''?>"></li>
+        <?php endfor; ?>
+      </ol>
 
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-      <span class="fa fa-3x fa-chevron-circle-left"></span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-      <span class="fa fa-3x fa-chevron-circle-right"></span>
-    </a>
+      <div class="carousel-inner">
+        <?php for($x=1;$x<=3;$x++): $img = get_field('home_slide'.$x.'_image'); ?>
+          <div class="item <?=$x==1 ? 'active' : ''?>">
+            <div class="container">
+              <div class="jumbotron" style="background-image: url('<?=$img['url']?>');">
+                <h1><?=html_entity_decode(get_field('home_slide'.$x.'_headline', 4))?></h1>
+                <p><?=html_entity_decode(get_field('home_slide'.$x.'_subtitle', 4))?></p>
+                <p><a href="<?=get_field('home_slide'.$x.'_link', 4)?>" class="btn btn-danger btn-lg" role="button"><?=get_field('home_slide'.$x.'_button', 4)?> <i class="fa fa-fw fa-chevron-circle-right"></i></a></p>
+              </div>
+            </div>
+          </div>
+        <?php endfor; ?>
+      </div>
+
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="fa fa-3x fa-chevron-circle-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="fa fa-3x fa-chevron-circle-right"></span>
+      </a>
+
   </div>
+  <?php endif; ?>
 
 </header>

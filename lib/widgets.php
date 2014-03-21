@@ -232,7 +232,7 @@ class Subscribe_Form_Widget extends WP_Widget {
           <label class="sr-only" for="subscribeFormEmail">Email address</label>
           <input type="email" name="email" class="form-control" style="width: 150px;margin-left:10px;" id="subscribeFormEmail" placeholder="Email address">
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-left: 10px;"><i class="fa fa-fw fa-chevron-right"></i></button>
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px;"><span class="visible-xs">Sign Up <i class="fa fa-fw fa-chevron-right"></i></span><i class="fa fa-fw fa-chevron-right hidden-xs"></i></button>
       </div>
     </form>
     <?php
