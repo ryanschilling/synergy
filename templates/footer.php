@@ -68,7 +68,7 @@
 
 	  <div class="legal">
 	    <div class="copyright">
-	      <p>&copy; 2001-<?php echo date('Y'); ?> Synergy Telecom, Inc. All rights reserved.</p>
+	      <p>&copy; 2001-<?php echo date('Y'); ?> Synergy Telecom, Inc. <span class="hidden-sm">All rights reserved.</span></p>
 	      <nav class="links">
 		      <?php
 		          if (has_nav_menu('footer_navigation')) :

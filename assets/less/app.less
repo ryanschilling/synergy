@@ -191,9 +191,9 @@ body {
 
             > li > a{
                color: #b4b4b4;
-               font-size: 22px;
-               padding: 22px 58px;
-               line-height: 35px;
+               font-size: 20px;
+               padding: 22px 26px;
+               line-height: 36px;
                font-weight: 600;
                text-shadow: -1px -1px 0 #3b3b3b;
 
@@ -433,7 +433,8 @@ body {
    Recent Post
    ========================================================================== */
    .recent-post{
-      .make-sm-column(4);
+      .make-xs-column(12);
+      .make-md-column(4);
 
       h3 + p{
          margin-top: 25px;
@@ -446,7 +447,8 @@ body {
    Quick Links
    ========================================================================== */
    .quick-links{
-      .make-sm-column(8);
+      .make-xs-column(12);
+      .make-md-column(8);
 
       .social{
          position: relative;
@@ -605,8 +607,22 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Media Queries
    ========================================================================== */
 
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+   .header{ background-size: 576px 133px; }
+   .header .navbar-header{ background-size: 720px 133px; }
+   .header .navbar-header .utility > ul > li > a{ padding: 10px 10px; }
+   .footer .legal .copyright .links > ul > li > a{ padding: 10px 5px; }
+}
+
 @media (min-width: @screen-sm-min) { }
 
-@media (min-width: @screen-md-min) { }
+@media (min-width: @screen-md-min) {
 
-@media (min-width: @screen-lg-min) { }
+   .header .menu nav > ul > li > a{ font-size: 22px; padding: 22px 41px; }
+}
+
+@media (min-width: @screen-lg-min) {
+   
+   .header .menu nav > ul > li > a{ padding: 22px 58px; }
+}
