@@ -14,6 +14,7 @@ function roots_setup() {
     'quicklinks_navigation_2' => __('Quicklinks - Center', 'roots'),
     'quicklinks_navigation_3' => __('Quicklinks - Right', 'roots'),
     'social_navigation' => __('Social Icons', 'roots'),
+    'footer_navigation' => __('Legal Links', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)

@@ -10,7 +10,10 @@
    Base
    ========================================================================== */
 
-body { }
+body {
+   background: url('../img/body-tile.png') #eaebeb top center;
+   color: #5e5e5e;
+}
 
 
 
@@ -21,6 +24,7 @@ body { }
 .header{
    .navbar;
    background: url('../img/header-tile.png') repeat-x top center;
+   margin-bottom: 30px;
 
    .navbar-header{
       background: url('../img/header-bg.png') no-repeat top center;
@@ -162,6 +166,9 @@ body { }
       }
    }
 
+/* ==========================================================================
+   Menu
+   ========================================================================== */
    .menu{
       background: url('../img/menu-tile.png') repeat-x;
       height: 86px;
@@ -252,10 +259,14 @@ body { }
       }
    }
 
+/* ==========================================================================
+   Banner
+   ========================================================================== */
    .banner{
       .carousel;
       background: url('../img/banner-tile.png') repeat-x top center;
-      height: 367px;
+      height: 373px;
+      border-bottom: 6px solid #fff;
 
       .carousel-control{
 
@@ -295,7 +306,7 @@ body { }
             text-shadow: 2px 2px 6px rgba(12, 48, 86, 0.75);
 
             + p{
-               color: @link-hover-color;
+               color: lighten(@link-hover-color, 20%);
                font-weight: normal;
                font-size: 28px;
                text-shadow: 2px 2px 6px rgb(12, 48, 86);
@@ -350,7 +361,168 @@ body { }
    Footer
    ========================================================================== */
 
-.content-info { }
+.footer {
+   background: url('../img/menu-tile.png') repeat-x bottom center;
+   border-top: 6px solid #fff;
+
+   .widgets{
+      .make-row();
+      padding-top: 30px;
+      padding-bottom: 30px;
+      border-bottom: 6px solid #fff;
+      margin-bottom: 20px;
+      background: url('../img/widget-tile.png') #d6d6d6 repeat-x top center;
+   }
+
+/* ==========================================================================
+   Recent Post
+   ========================================================================== */
+   .recent-post{
+      .make-sm-column(4);
+
+      h3 + p{
+         margin-top: 25px;
+         margin-bottom: 25px;
+         font-size: 16px;
+      }
+   }
+
+/* ==========================================================================
+   Quick Links
+   ========================================================================== */
+   .quick-links{
+      .make-sm-column(8);
+
+      .social{
+         position: relative;
+         top: 20px;
+
+         ul{
+            .nav;
+            .nav-pills;
+            display: inline;
+            float: right;
+            font-size: 15px;
+         }
+
+         a{
+            visibility: hidden;
+            .fa;
+            .fa-fw;
+            .fa-2x;
+            font-size: 28px;
+            margin-top: -12px;
+
+            &:before{
+               .fa;
+               .fa-fw;
+               visibility: visible;
+               margin-left: -10px;
+            }
+         }
+
+         .menu-facebook a:before{ content: "\f082"; color: rgb(59, 89, 152); }
+         .menu-twitter a:before{ content: "\f081"; color: rgb(0, 172, 237); }
+         .menu-linkedin a:before{ content: "\f08c"; color: rgb(0, 123, 182); }
+         .menu-google a:before{ content: "\f0d4"; color: rgb(211, 75, 57); }
+         .menu-youtube a:before{ content: "\f166"; color: rgb(187, 0, 0); }
+      }
+
+      .column{
+         .make-sm-column(4);
+
+         > ul{
+            .nav;
+            .nav-pills;
+            .nav-stacked;
+
+            > li > a{
+               background: none;
+               padding: 10px 0px;
+               padding-left: 0;
+               font-size: 16px;
+               font-weight: 600;
+
+               &:hover,
+               &:active,
+               &:focus{
+                  background: none;
+               }
+            }
+         }
+
+         + .column{
+            border-left: 6px solid #d6d6d6;
+
+            ul > li > a{
+               padding-left: 25px;
+            }
+         }
+      }
+   }
+
+/* ==========================================================================
+   Legal
+   ========================================================================== */
+   .legal{
+      .make-row();
+      margin-top: 40px;
+      color: #818181;
+      text-shadow: -1px -1px 0 #3b3b3b;
+      height: 86px;
+
+      .copyright{
+         .make-xs-column(12);
+         .make-sm-column(8);
+         .make-md-column(9);
+         padding-top: 30px;
+
+         p,
+         .links{ float: left; }
+
+         .links > ul{
+            .nav;
+            .nav-pills;
+            margin-top: -10px;
+            margin-left: 15px;
+
+            > li > a{
+               color: #b4b4b4;
+               font-weight: 500px;
+
+               &:hover,
+               &:active,
+               &:focus{
+                  color: #fff;
+                  background: none;
+               }
+            }
+         }
+      }
+
+      .leadhub{
+         .make-xs-column(12);
+         .make-sm-column(4);
+         .make-md-column(3);
+         padding-top: 25px;
+
+         p{
+            text-align: right;
+            line-height: 28px;
+
+            a{
+               background: url('../img/footer-leadhub.png') no-repeat;
+               display: inline-block;
+               width: 90px;
+               height: 28px;
+               margin-left: 4px;
+               color: transparent;
+               text-shadow: none;
+            }
+         }
+      }
+   }
+}
 
 
 
