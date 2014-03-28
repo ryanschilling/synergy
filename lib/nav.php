@@ -102,52 +102,336 @@ add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
  * http://mkoerner.de/breadcrumbs-for-wordpress-themes-with-bootstrap-3/
  */
 function roots_breadcrumbs() {
-  if(!is_home()) {
+  if(!is_front_page()) {
     echo '<ol class="breadcrumb">';
     echo '<li><a href="'.get_option('home').'"><i class="fa fa-fw fa-2x fa-home"></i> Home</a></li>';
+
+    $post = get_post();
+
+    // Post
     if (is_single()) {
-      echo '<li>';
-      the_category(', ');
-      echo '</li>';
-      if (is_single()) {
-        echo '<li>';
-        the_title();
-        echo '</li>';
+      switch($post->post_type)
+      {
+        case 'review':
+          echo '<li>';
+          echo '<a href="/products">Products</a>';
+          echo '</li>';
+          echo '<li>';
+          echo '<a href="/products/reviews">Reviews</a>';
+          echo '</li>';
+          break;
+
+        case 'faq':
+          $term = wp_get_post_terms($post->ID, ['faq-section', 'faq-topic']);
+          echo '<li>';
+          echo '<a href="/support">Support</a>';
+          echo '</li>';
+          echo '<li>';
+          echo '<a href="/support/knowledge-base">Knowledge Base</a>';
+          echo '</li>';
+          if(!empty($term[0]))
+          {
+            echo '<li>';
+            echo '<a href="/support/knowledge-base/section/'.$term[0]->slug.'">'.$term[0]->name.'</a>';
+            echo '</li>';
+          }
+          break;
+
+        case 'training-video':
+          $term = wp_get_post_terms($post->ID, 'training-video-series');
+          echo '<li>';
+          echo '<a href="/support">Support</a>';
+          echo '</li>';
+          echo '<li>';
+          echo '<a href="/support/training-videos">Training Videos</a>';
+          echo '</li>';
+          if(!empty($term[0]))
+          {
+            echo '<li>';
+            echo '<a href="/support/training-videos/series/'.$term[0]->slug.'">'.$term[0]->name.'</a>';
+            echo '</li>';
+          }
+          break;
+
+        case 'product':
+          $term = wp_get_post_terms($post->ID, 'product-type');
+          echo '<li>';
+          echo '<a href="/products">Products</a>';
+          echo '</li>';
+          if(!empty($term[0]))
+          {
+            echo '<li>';
+            echo '<a href="/products/types/'.$term[0]->slug.'">'.$term[0]->name.'</a>';
+            echo '</li>';
+          }
+          break;
+
+        case 'case-study':
+          echo '<li>';
+          echo '<a href="/solutions">Solutions</a>';
+          echo '</li>';
+          echo '<li>';
+          echo '<a href="/solutions/case-studies">Case Studies</a>';
+          echo '</li>';
+          break;
+
+        case 'post':
+          echo '<li>';
+          echo '<a href="/blog">Blog</a>';
+          echo '</li>';
+          echo '<li>';
+          the_category(', ');
+          echo '</li>';
+          break;
       }
-    } elseif (is_category()) {
-      echo '<li>';
-      single_cat_title();
-      echo '</li>';
-    } elseif (is_page() && (!is_front_page())) {
       echo '<li>';
       the_title();
       echo '</li>';
+
+    // Categories
+    } elseif (is_category()) {
+      echo '<li>';
+      echo '<a href="/blog">Blog</a>';
+      echo '</li>';
+      echo '<li>';
+      single_cat_title();
+      echo '</li>';
+
+    // Page
+    } elseif (is_page() && (!is_front_page())) {
+      $post = get_post();
+      if($post->post_parent){
+        $anc = get_post_ancestors( $post->ID );
+        foreach ( $anc as $ancestor ) {
+            $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+        }
+        echo $output;
+      }
+      echo '<li>'.get_the_title().'</li>';
+
+    // Tag
     } elseif (is_tag()) {
-      echo '<li>Tag: ';
+      echo '<li>';
+      echo '<a href="/blog">Blog</a>';
+      echo '</li>';
+      echo '<li>';
       single_tag_title();
       echo '</li>';
+
+    // Day Archive
     } elseif (is_day()) {
+      echo '<li>';
+      echo '<a href="/blog">Blog</a>';
+      echo '</li>';
       echo'<li>Archive for ';
       the_time('F jS, Y');
       echo'</li>';
+
+    // Month Archive
     } elseif (is_month()) {
+      echo '<li>';
+      echo '<a href="/blog">Blog</a>';
+      echo '</li>';
       echo'<li>Archive for ';
       the_time('F, Y');
       echo'</li>';
+
+    // Year Archive
     } elseif (is_year()) {
       echo'<li>Archive for ';
       the_time('Y');
       echo'</li>';
+
+    // Author Archive
     } elseif (is_author()) {
-      echo'<li>Author Archives';
-      echo'</li>';
-    } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-      echo '<li>Blog Archives';
-      echo'</li>';
+      echo '<li>';
+      echo '<a href="/blog">Blog</a>';
+      echo '</li>';
+      echo'<li>Author Archives</li>';
+
+    // Knowledge Base Topic Archive
+    } elseif (is_tax('faq-topic')) {
+      
+        $terms = get_terms('faq-topic', array('hide_empty' => false));
+        echo '<li>';
+        echo '<a href="/support">Support</a>';
+        echo '</li>';
+        echo '<li>';
+        echo '<a href="/support/knowledge-base">Knowledge Base</a>';
+        echo '</li>';
+        echo '<li>';
+        foreach($terms as $term)
+        {
+          if(is_tax('faq-topic', $term->term_id))
+          {
+            echo $term->name;
+            break;
+          }
+        }
+        echo '</li>';
+
+    // Knowledge Base Section Archive
+    } elseif (is_tax('faq-section')) {
+      
+        $terms = get_terms('faq-section', array('hide_empty' => false));
+        echo '<li>';
+        echo '<a href="/support">Support</a>';
+        echo '</li>';
+        echo '<li>';
+        echo '<a href="/support/knowledge-base">Knowledge Base</a>';
+        echo '</li>';
+        echo '<li>';
+        foreach($terms as $term)
+        {
+          if(is_tax('faq-section', $term->term_id))
+          {
+            echo $term->name;
+            break;
+          }
+        }
+        echo '</li>';
+
+    // Knoweldge Base Archive
+    } elseif (is_post_type_archive('faq')) {
+          
+      echo '<li>';
+      echo '<a href="/support">Support</a>';
+      echo '</li>';
+      echo '<li>';
+      echo 'Knowledge Base';
+      echo '</li>';
+
+    // Training Video Series Archive
+    } elseif (is_tax('training-video-series')) {
+        
+      $terms = get_terms('training-video-series', array('hide_empty' => false));
+      echo '<li>';
+      echo '<a href="/support">Support</a>';
+      echo '</li>';
+      echo '<li>';
+      echo '<a href="/support/training-videos">Training Videos</a>';
+      echo '</li>';
+      echo '<li>';
+      foreach($terms as $term)
+      {
+        if(is_tax('training-video-series', $term->term_id))
+        {
+          echo $term->name;
+          break;
+        }
+      }
+      echo '</li>';
+    
+    // Training Videos Archive
+    } elseif (is_post_type_archive('training-video')) {
+          
+      echo '<li>';
+      echo '<a href="/support">Support</a>';
+      echo '</li>';
+      echo '<li>';
+      echo 'Training Videos';
+      echo '</li>';
+
+    // Review Archive
+    } elseif (is_post_type_archive('review')) {
+      
+      echo '<li>';
+      echo '<a href="/products">Products</a>';
+      echo '</li>';
+      echo '<li>';
+      echo 'Reviews';
+      echo '</li>';
+
+    // Product Features Archive
+    } elseif (is_tax('product-feature')) {
+      
+        $terms = get_terms('product-feature', array('hide_empty' => false));
+        echo '<li>';
+        echo '<a href="/products">Products</a>';
+        echo '</li>';
+        echo '<li>';
+        foreach($terms as $term)
+        {
+          if(is_tax('product-feature', $term->term_id))
+          {
+            echo $term->name;
+            break;
+          }
+        }
+        echo '</li>';
+
+    // Product Manufacturer Archive
+    } elseif (is_tax('product-manufacturer')) {
+      
+        $terms = get_terms('product-manufacturer', array('hide_empty' => false));
+        echo '<li>';
+        echo '<a href="/products">Products</a>';
+        echo '</li>';
+        echo '<li>';
+        foreach($terms as $term)
+        {
+          if(is_tax('product-manufacturer', $term->term_id))
+          {
+            echo $term->name;
+            break;
+          }
+        }
+        echo '</li>';
+
+    // Product Type Archive
+    } elseif (is_tax('product-type')) {
+        
+      $terms = get_terms('product-type', array('hide_empty' => false));
+      echo '<li>';
+      echo '<a href="/products">Products</a>';
+      echo '</li>';
+      echo '<li>';
+      foreach($terms as $term)
+      {
+        if(is_tax('product-type', $term->term_id))
+        {
+          echo $term->name;
+          break;
+        }
+      }
+      echo '</li>';
+
+    // Product Archive
+    } elseif (is_post_type_archive('product')) {
+      
+      echo '<li>';
+      echo 'Products';
+      echo '</li>';
+
+    // Case Studies Archive
+    } elseif (is_post_type_archive('case-study')) {
+          
+      echo '<li>';
+      echo '<a href="/solutions">Solutions</a>';
+      echo '</li>';
+      echo '<li>';
+      echo 'Case Studies';
+      echo '</li>';
+
+    // Case Studies Archive
+    } elseif (is_post_type_archive('case-study')) {
+          
+      echo '<li>';
+      echo '<a href="/solutions">Solutions</a>';
+      echo '</li>';
+      echo '<li>';
+      echo 'Case Studies';
+      echo '</li>';
+
+    // Search Results
     } elseif (is_search()) {
-      echo'<li>Search Results';
-      echo'</li>';
+      echo'<li>Search Results</li>';
+    
+    // Blog Archive
+    } else{
+      echo '<li>Blog</li>';
     }
+
     echo '</ol>';
   }
 }

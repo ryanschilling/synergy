@@ -97,7 +97,7 @@ function add_product_post_type() {
 			),
 			'description' => 'Hardware and software products that Synergy Telecom provides.',
 			'public' => true,
-			'has_archive' => false,
+			'has_archive' => true,
 			'menu_position' => 5,
 			'hierarchical' => true,
 			'supports' => array(
@@ -107,7 +107,7 @@ function add_product_post_type() {
 				'product-type', 'product-feature', 'product-manufacturer',
 			),
 			'rewrite' => array(
-				'slug' => 'products/all'
+				'slug' => 'products'
 			),
 			'menu_icon' => 'dashicons-admin-page',
 		)
@@ -134,7 +134,7 @@ function add_review_post_type() {
 			),
 			'description' => 'Reviews from Synergy Telecom customers.',
 			'public' => true,
-			'has_archive' => false,
+			'has_archive' => true,
 			'menu_position' => 5,
 			'hierarchical' => false,
 			'supports' => array(
@@ -237,8 +237,8 @@ function add_faq_post_type() {
 			),
 			'hierarchical' => true,
 			'rewrite' => array(
-				'slug' => 'sections',
-				'hierarchical' => true,
+				'slug' => 'support/knowledge-base/section',
+				'hierarchical' => false,
 			),
 		)
 	);
@@ -263,7 +263,8 @@ function add_faq_post_type() {
 			),
 			'hierarchical' => false,
 			'rewrite' => array(
-				'slug' => 'topics',
+				'slug' => 'support/knowledge-base/topic',
+				'hierarchical' => false,
 			),
 		)
 	);
@@ -283,6 +284,7 @@ function add_faq_post_type() {
 			'description' => 'Knowledge base of frequently asked questions.',
 			'public' => true,
 			'has_archive' => true,
+			'hierarchical' => true,
 			'menu_position' => 5,
 			'supports' => array(
 				'title', 'revisions',
@@ -324,7 +326,8 @@ function add_training_video_post_type() {
 			),
 			'hierarchical' => false,
 			'rewrite' => array(
-				'slug' => 'series',
+				'slug' => 'support/training-videos/series',
+				'hierarchical' => false,
 			),
 		)
 	);
@@ -344,6 +347,7 @@ function add_training_video_post_type() {
 			'description' => 'Training and support videos from Synergy Telecom support team.',
 			'public' => true,
 			'has_archive' => true,
+			'hierarchical' => true,
 			'menu_position' => 5,
 			'supports' => array(
 				'title', 'editor', 'thumbnail', 'revisions',
@@ -352,7 +356,7 @@ function add_training_video_post_type() {
 				'training-video-series',
 			),
 			'rewrite' => array(
-				'slug' => 'support/training-videos'
+				'slug' => 'support/training-videos',
 			),
 			'menu_icon' => 'dashicons-format-video',
 		)
