@@ -202,8 +202,9 @@ function roots_breadcrumbs() {
       $post = get_post();
       if($post->post_parent){
         $anc = get_post_ancestors( $post->ID );
+        krsort($anc);
         foreach ( $anc as $ancestor ) {
-            $output = '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
+            $output .= '<li><a href="'.get_permalink($ancestor).'" title="'.get_the_title($ancestor).'">'.get_the_title($ancestor).'</a></li>';
         }
         echo $output;
       }
@@ -403,14 +404,25 @@ function roots_breadcrumbs() {
       echo 'Products';
       echo '</li>';
 
-    // Case Studies Archive
-    } elseif (is_post_type_archive('case-study')) {
+    // Case Studies Industry Archive
+    } elseif (is_tax('case-study-industry')) {
           
+     $terms = get_terms('case-study-industry', array('hide_empty' => false));
       echo '<li>';
       echo '<a href="/solutions">Solutions</a>';
       echo '</li>';
       echo '<li>';
-      echo 'Case Studies';
+      echo '<a href="/solutions/voip-industries">VoIP Industries</a>';
+      echo '</li>';
+      echo '<li>';
+      foreach($terms as $term)
+      {
+        if(is_tax('case-study-industry', $term->term_id))
+        {
+          echo $term->name;
+          break;
+        }
+      }
       echo '</li>';
 
     // Case Studies Archive

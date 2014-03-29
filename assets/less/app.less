@@ -3,7 +3,7 @@
  */
 
 @import "font-awesome/font-awesome.less";
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
 @import "bootstrap/bootstrap.less";
 
 
@@ -534,7 +534,11 @@ body {
       }
 
       // Expand active menus
-      > ul li.dropdown.active > ul.dropdown-menu{ display: block; }
+      > ul li.dropdown.active > ul.dropdown-menu,
+      > ul > li.dropdown > ul.dropdown-menu{ display: block; }
+
+      // Space multiple menus
+      > ul > li + li{ margin-top: 30px; }
 
       // Section
       > ul > li{
@@ -544,9 +548,25 @@ body {
             font-weight: 400;
             color: @gray;
             padding: 0 15px;
+            padding-left: 35px;
             margin-bottom: 10px;
 
             > .caret{ display: none; }
+
+            &:before{
+               content: '\f13a';
+               font-family: 'FontAwesome';
+               position: absolute;
+               left: 0px;
+               font-size: 28px;
+               top: 0px;
+               background-color: darken(@gray-lighter, 10%);
+               color: transparent;
+               text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+                 -webkit-background-clip: text;
+                    -moz-background-clip: text;
+                         background-clip: text;
+            }
          }
 
          // Page
@@ -558,7 +578,7 @@ body {
             #gradient > .vertical(#fdfdfd, #f0f0f0);
 
             li > a{
-               padding: 10px 15px;
+               padding: 12px 15px;
                padding-right: 25px;
                color: @link-color;
                font-weight: 600;
@@ -570,7 +590,7 @@ body {
                }
             }
 
-            li + li a{
+            li + li > a{
                border-top: 1px solid #e2e2e2;
             }
 
@@ -600,14 +620,89 @@ body {
             > li.active.dropdown > a:before,
             > li.dropdown > a:hover:before{ content: '\f13a'; }
 
+            > li.active.dropdown > a{
+               border-bottom: 1px solid #e2e2e2;
+            }
+
             // Subpage
             > li > ul.dropdown-menu{
+
                > li > a{
-                  padding: 10px 30px;
+                  padding: 12px 30px;
                   padding-right: 40px;
                }
             }
 
+         }
+      }
+
+      // Custom icons
+      > ul > li.menu-contact-us > a:before{ content: '\f086'; }
+      > ul > li.menu-support > a:before{ content: '\f02d'; }
+      > ul > li.menu-partner-with-us > a:before{ content: '\f0c0'; }
+      > ul > li.menu-products > a:before{ content: '\f130'; }
+      > ul > li.menu-manufacturers > a:before{ content: '\f0f7'; }
+   }
+
+   // Sidebar widgets
+   section.widget{
+      position: relative;
+
+      // Space widgets
+      + section.widget{ margin-top: 30px; }
+
+      > h3{
+         font-size: 24px;
+         font-weight: 400;
+         color: @gray;
+         padding: 0 15px;
+         padding-left: 35px;
+         margin-bottom: 10px;
+         margin-top: 0;
+
+         > .caret{ display: none; }
+
+         &:before{
+            content: '\f13a';
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 0px;
+            font-size: 28px;
+            top: 0px;
+            background-color: darken(@gray-lighter, 10%);
+            color: transparent;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+              -webkit-background-clip: text;
+                 -moz-background-clip: text;
+                      background-clip: text;
+         }
+      }
+
+      // Make look like a menu
+      > ul{
+         .nav;
+         .nav-stacked;
+         border-radius: @border-radius-base;
+         border: 1px solid #e2e2e2;
+         overflow: hidden;
+         background: #f0f0f0;
+         #gradient > .vertical(#fdfdfd, #f0f0f0);
+
+         li > a{
+            padding: 12px 15px;
+            padding-right: 25px;
+            color: @link-color;
+            font-weight: 600;
+            position: relative;
+
+            &:hover{
+               color: @link-hover-color;
+               background: #fff;
+            }
+         }
+
+         li + li > a{
+            border-top: 1px solid #e2e2e2;
          }
       }
    }

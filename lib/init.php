@@ -15,6 +15,7 @@ function roots_setup() {
     'quicklinks_navigation_3' => __('Quicklinks - Right', 'roots'),
     'social_navigation' => __('Social Icons', 'roots'),
     'footer_navigation' => __('Legal Links', 'roots'),
+    'about_navigation' => __('About Sidebar Menu', 'roots'),
     'solutions_navigation' => __('Solutions Sidebar Menu', 'roots'),
     'products_navigation' => __('Products Sidebar Menu', 'roots'),
     'partners_navigation' => __('Partners Sidebar Menu', 'roots'),

@@ -1,6 +1,27 @@
 <?php
 
 /**
+ * Change permalink slug for blog to /blog
+ */
+function reset_blog_post_type() {
+	global $wp_post_types;
+
+	$options = $wp_post_types['post'];
+	unset($wp_post_types['post']);
+	$args = array();
+	foreach($options as $k=>$v)
+	{
+		$args[$k] = is_object($v) ? (array) $v : $v;
+	}
+	$args['rewrite'] = array(
+		'slug' => 'blog',
+		'hierarchical' => false
+		);
+	register_post_type( 'post', $args);
+}
+add_action( 'init', 'reset_blog_post_type' );
+
+/**
  * Create Product post type
  */
 function add_product_post_type() {
@@ -141,7 +162,8 @@ function add_review_post_type() {
 				'title', 'editor', 'thumbnail', 'revisions',
 			),
 			'rewrite' => array(
-				'slug' => 'products/reviews'
+				'slug' => 'products/reviews',
+				'hierarchical' => false
 			),
 			'menu_icon' => 'dashicons-star-half',
 		)
