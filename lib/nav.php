@@ -122,7 +122,7 @@ function roots_breadcrumbs() {
           break;
 
         case 'faq':
-          $term = wp_get_post_terms($post->ID, ['faq-section', 'faq-topic']);
+          $term = wp_get_post_terms($post->ID, array('faq-section', 'faq-topic'));
           echo '<li>';
           echo '<a href="/support">Support</a>';
           echo '</li>';

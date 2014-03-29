@@ -15,6 +15,10 @@ function roots_setup() {
     'quicklinks_navigation_3' => __('Quicklinks - Right', 'roots'),
     'social_navigation' => __('Social Icons', 'roots'),
     'footer_navigation' => __('Legal Links', 'roots'),
+    'solutions_navigation' => __('Solutions Sidebar Menu', 'roots'),
+    'products_navigation' => __('Products Sidebar Menu', 'roots'),
+    'partners_navigation' => __('Partners Sidebar Menu', 'roots'),
+    'support_navigation' => __('Support Sidebar Menu', 'roots'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)

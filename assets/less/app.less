@@ -385,13 +385,55 @@ body {
       background: none;
       padding: 20px 0px;
       margin-bottom: 8px;
+      overflow: hidden;
+      white-space: nowrap;
 
       .fa{ position: relative; top: 5px; }
 
       >li+li:before{
+         font-family: "FontAwesome";
          color: @gray-light;
          padding: 0 10px;
+         content: "\f054";
       }
+   }
+
+   .social{
+      position: relative;
+      top: 28px;
+
+      ul{
+         .nav;
+         .nav-pills;
+         display: inline;
+         float: right;
+         font-size: 15px;
+      }
+
+      #menu-social-icons-1,
+      #menu-social-icons-2{ min-width: 190px; }
+
+      a{
+         visibility: hidden;
+         .fa;
+         .fa-fw;
+         .fa-2x;
+         font-size: 28px;
+         margin-top: -12px;
+
+         &:before{
+            .fa;
+            .fa-fw;
+            visibility: visible;
+            margin-left: -10px;
+         }
+      }
+
+      .menu-facebook a:before{ content: "\f082"; color: rgb(59, 89, 152); }
+      .menu-twitter a:before{ content: "\f081"; color: rgb(0, 172, 237); }
+      .menu-linkedin a:before{ content: "\f08c"; color: rgb(0, 123, 182); }
+      .menu-google a:before{ content: "\f0d4"; color: rgb(211, 75, 57); }
+      .menu-youtube a:before{ content: "\f166"; color: rgb(187, 0, 0); }
    }
 }
 
@@ -406,6 +448,7 @@ body {
 
 .page-header{ margin-top: 0; margin-bottom: 20px; }
 .page-header h1{ margin-top: 0; margin-bottom: 0; }
+.entry-title{ margin-top: 0; }
 
 .blocks{
    .make-row();
@@ -465,6 +508,109 @@ body {
 
 .sidebar {
 
+   .sidebar-menu{
+      > ul{
+         .nav;
+         .nav-stacked;
+      }
+
+      // Reset dropdowns
+      > ul li.dropdown > ul.dropdown-menu{
+         display: none;
+         position: relative;
+         top: 0;
+         left: 0;
+         z-index: 1;
+         width: 100%;
+         padding: 0;
+         border: 0;
+         background: none;
+         .box-shadow(none);
+         border-radius: 0;
+         float: none;
+         margin: 0;
+
+         > li > a{ white-space: normal; }
+      }
+
+      // Expand active menus
+      > ul li.dropdown.active > ul.dropdown-menu{ display: block; }
+
+      // Section
+      > ul > li{
+         
+         > a{
+            font-size: 24px;
+            font-weight: 400;
+            color: @gray;
+            padding: 0 15px;
+            margin-bottom: 10px;
+
+            > .caret{ display: none; }
+         }
+
+         // Page
+         &.dropdown > ul.dropdown-menu{
+            border-radius: @border-radius-base;
+            border: 1px solid #e2e2e2;
+            overflow: hidden;
+            background: #f0f0f0;
+            #gradient > .vertical(#fdfdfd, #f0f0f0);
+
+            li > a{
+               padding: 10px 15px;
+               padding-right: 25px;
+               color: @link-color;
+               font-weight: 600;
+               position: relative;
+
+               &:hover{
+                  color: @link-hover-color;
+                  background: #fff;
+               }
+            }
+
+            li + li a{
+               border-top: 1px solid #e2e2e2;
+            }
+
+            > li.active > a,
+            > li > a:hover,
+            > li.active > ul.dropdown-menu > li.active > a,
+            > li > ul.dropdown-menu > li > a:hover{
+               background: #fff;
+               color: @link-hover-color;
+
+               &:before{
+                  content: '\f138';
+                  font-family: 'FontAwesome';
+                  position: absolute;
+                  right: 10px;
+                  font-size: 20px;
+                  top: 7px;
+                  background-color: darken(@gray-lighter, 10%);
+                  color: transparent;
+                  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+                    -webkit-background-clip: text;
+                       -moz-background-clip: text;
+                            background-clip: text;
+               }
+            }
+
+            > li.active.dropdown > a:before,
+            > li.dropdown > a:hover:before{ content: '\f13a'; }
+
+            // Subpage
+            > li > ul.dropdown-menu{
+               > li > a{
+                  padding: 10px 30px;
+                  padding-right: 40px;
+               }
+            }
+
+         }
+      }
+   }
 }
 
 
