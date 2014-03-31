@@ -36,5 +36,14 @@ function roots_setup() {
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');
+  add_filter('mce_buttons_2', function ( $buttons ) {
+    $first_button = array_shift($buttons);
+    array_unshift( $buttons, $first_button, 'styleselect');
+    return $buttons;
+  });
+  add_filter('tiny_mce_before_init', function($args){
+    $args['theme_advanced_styles'] = 'Lead Text=lead';
+    return $args;
+  });
 }
 add_action('after_setup_theme', 'roots_setup');
