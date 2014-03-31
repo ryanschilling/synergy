@@ -19,6 +19,14 @@ function reset_blog_post_type() {
 		);
 	register_post_type( 'post', $args);
 }
+function change_blog_permalinks($permalink, $post, $leavename) {
+    if($post->post_type == 'post')
+    {
+    	$permalink = str_ireplace($post->post_name, 'blog/'.$post->post_name, $permalink);
+    }
+    return $permalink;
+} 
+add_filter( 'post_link', 'change_blog_permalinks', 10, 3);
 add_action( 'init', 'reset_blog_post_type' );
 
 /**
