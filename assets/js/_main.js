@@ -27,6 +27,9 @@ var Roots = {
         event.preventDefault();
         return $(this).ekkoLightbox();
       });
+
+      // Open first collapsible paragraph
+      $('article.type-faq').first().find('a[data-toggle="collapse"]').trigger('click');
     }
   },
   // Home page

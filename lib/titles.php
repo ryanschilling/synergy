@@ -35,3 +35,19 @@ function roots_title() {
     return get_the_title();
   }
 }
+
+function roots_subtitle(){
+
+  // Blog archive
+  if(is_archive())
+  {
+    $subtitle = is_author() ? '<p>'.get_the_author_meta('description').'</p>' : term_description();
+    return $subtitle;
+  }
+
+  // Page/Post
+  if((is_page() || is_singular(array('post', 'product', 'case-study'))) && get_field('page_subtitle')):
+    return '<p>'.html_entity_decode(get_field('page_subtitle')).'</p>';
+  endif;
+
+}

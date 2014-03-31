@@ -83,9 +83,7 @@
         <div class="container">
           <div class="jumbotron" style="background-image: url('<?=$img['url']?>');">
             <h1><?=roots_title()?></h1>
-            <?php if(get_field('page_subtitle')): ?>
-              <p><?=html_entity_decode(get_field('page_subtitle'))?></p>
-            <?php endif; ?>
+            <?=roots_subtitle()?>
           </div>
         </div>
       </div>

@@ -1,13 +1,3 @@
-.box-shadow (@string) {
-  -webkit-box-shadow: @string;
-  -moz-box-shadow:    @string;
-  box-shadow:         @string;
-}
-.border-radius (@radius) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius:    @radius;
-  border-radius:         @radius;
-}
 .opacity (@opacity: 0.5) {
   -webkit-opacity: 	@opacity;
   -moz-opacity: 		@opacity;
@@ -19,10 +9,9 @@
 }
 .ekko-lightbox {
   .modal-content {
-    .box-shadow(none);
-    .border-radius(0);
-    border:none;
-    background-color:transparent;
+    border-radius: @border-radius-base;
+    border: 3px solid @link-color;
+    background: #fff;
   }
   .modal-header {
     border:0;
