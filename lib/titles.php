@@ -41,7 +41,7 @@ function roots_title() {
 
 function roots_subtitle(){
 
-  // Blog archive
+  // Archive
   if(is_archive())
   {
     $subtitle = is_author() ? '<p>'.get_the_author_meta('description').'</p>' : term_description();
@@ -49,7 +49,7 @@ function roots_subtitle(){
   }
 
   // Page/Post
-  if((is_page() || is_singular(array('post', 'product', 'case-study'))) && get_field('page_subtitle')):
+  if((is_page() || is_singular(array('post', 'product', 'case-study', 'training-video'))) && get_field('page_subtitle')):
     return '<p>'.html_entity_decode(get_field('page_subtitle')).'</p>';
   endif;
 

@@ -27,6 +27,7 @@ function roots_setup() {
   set_post_thumbnail_size(263, 263, false);
   add_image_size('category-thumb', 750, 9999); // 300px wide (and unlimited height)
   add_image_size('panel-image', 354, 236, true);
+  add_image_size('video-thumb', 125, 125, true);
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
   add_theme_support('post-formats', array('aside', 'gallery', 'quote', 'status', 'image', 'video', 'audio'));

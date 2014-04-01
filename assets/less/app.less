@@ -489,7 +489,7 @@ body.single-case-study{
 
    .block{
       .make-xs-column(12);
-      .make-md-column(4);
+      .make-md-column(6);
 
       .panel{
          .panel-primary;
@@ -512,6 +512,7 @@ body.single-case-study{
       h2 + p{ font-weight: 300; font-size: 17px; margin-bottom: 20px; }
    }
 }
+body.home .blocks .block{ .make-md-column(4); }
 
 .btn > .fa{ opacity: 0.5; }
 .btn:hover > .fa{ opacity: 1; }
@@ -538,15 +539,6 @@ body.single-case-study{
          font-style: italic;
          color: @link-color;
       }
-   }
-
-   iframe{
-      .panel;
-      .panel-primary;
-      border-width: 3px;
-      margin-bottom: 0px;
-      clear: both;
-      width: 100%;
    }
 }
 
@@ -856,6 +848,15 @@ body.search-results{
          margin-bottom: 20px;
          width: auto;
       }
+
+      iframe{
+         .panel;
+         .panel-primary;
+         border-width: 3px;
+         margin-bottom: 0px;
+         clear: both;
+         width: 100%;
+      }
    }
    .sidebar{
       .pull-right;
@@ -1044,6 +1045,78 @@ body.single article.type-faq footer{
 
 .related-faqs{
    h3{ margin-bottom: 20px; }
+}
+
+/* ==========================================================================
+   Training Video
+   ========================================================================== */
+
+body.single-training-video .type-training-video{
+   .panel{
+      .panel-primary;
+      border-width: 3px;
+      margin-bottom: 20px;
+
+      .panel-heading{ .border-top-radius(0); }
+      .panel-heading h3{ .panel-title; text-transform: uppercase; font-weight: 400; font-size: 14px; }
+
+      .panel-body{ padding: 0; }
+      .panel-body a{ position: relative; display: block; overflow: hidden; }
+      .panel-body a > img{ width: 100%; height: auto; position: relative; z-index: 1; }
+      .panel-body a > .overlay{ color: #fff; width:100%; height:100%; position: absolute; z-index: 2; top: -100%; background: transparent; }
+      .panel-body a > .overlay > .fa{ position: absolute; top: -100px; margin-top: -30px; width: 100%; }
+      .panel-body a:hover > .overlay{ top:0; background: fadeout(darken(@brand-primary, 20%), 40%); .transition(background 0.5s); }
+      .panel-body a:hover > .overlay > .fa{ top: 50%; .transition-duration(0.5s); }
+
+      iframe{ border: 0; display: block; }
+   }
+
+   footer{
+      padding: 0;
+      border: 0;
+      background: none;
+      box-shadow: none;
+      margin: 0;
+   }
+
+   footer .next-video,
+   footer .prev-video{
+      .well;
+      margin-top: 20px;
+      background: #f0f0f0;
+      #gradient > .vertical(#fdfdfd, #f0f0f0);
+      padding: 0;
+      border-radius: @border-radius-base;
+      overflow: hidden;
+
+      .image{
+         overflow: hidden;
+         border-radius: @border-radius-base;
+
+         img{
+            width: 100%;
+            height: 100%;
+            border-radius: @border-radius-base;
+            overflow: hidden;
+         }
+      }
+
+      .description{
+         h3{ margin-top: 0; margin-bottom: 0; }
+         p{ display: none; }
+         a{ display: block; text-decoration: none; }
+      }
+
+      &:hover{
+         background: #fff;
+         .transition-duration(0.5s);
+
+         a{
+            color: @link-hover-color;
+            .transition-duration(0.5s);
+         }
+      }
+   }
 }
 
 /* ==========================================================================
@@ -1443,6 +1516,12 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       }
    }
 
+   // Training videos
+   footer .next-video,
+   footer .prev-video{
+      .description h3{ .h4; margin: 0; }
+   }
+
    // Featured image on pages and posts
    .content .featured-image{ width: 100%; float: none; margin: 0; margin-bottom: 20px; }
 
@@ -1462,6 +1541,17 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 
 
+/* ==========================================================================
+   Media Queries: Laptop
+   ========================================================================== */
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+   
+   // Training videos
+   footer .next-video,
+   footer .prev-video{
+      .description h3{ .h4; margin: 0; }
+   }
+}
 
 
 /* ==========================================================================

@@ -44,6 +44,19 @@ var Roots = {
         $('.menu-support .dropdown.menu-knowledge-base a[href^="'+url+'"]').parents('li').addClass('active');
       }
 
+      // For training video pages make sure that the sidebar menu item is highlighted
+      exp = /^\/support\/training-videos/i;
+      if(exp.test(window.location.pathname))
+      {
+        $('.menu-support .dropdown.menu-training-videos').addClass('active');
+      }
+      exp = /^\/support\/training-videos\/series\/([^\/]+)/i;
+      url = $('.breadcrumb li:nth-child(4) a').attr('href');
+      if(exp.test(url))
+      {
+        $('.menu-support .dropdown.menu-training-videos a[href^="'+url+'"]').parents('li').addClass('active');
+      }
+
     }
   },
   // Home page
