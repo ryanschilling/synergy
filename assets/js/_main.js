@@ -29,7 +29,21 @@ var Roots = {
       });
 
       // Open first collapsible paragraph
-      $('article.type-faq').first().find('a[data-toggle="collapse"]').trigger('click');
+      $('.faq-collapse').first().find('a[data-toggle="collapse"]').trigger('click');
+
+      // For FAQ pages make sure that the sidebar menu item is highlighted
+      var exp = /^\/support\/knowledge-base/i;
+      if(exp.test(window.location.pathname))
+      {
+        $('.menu-support .dropdown.menu-knowledge-base').addClass('active');
+      }
+      exp = /^\/support\/knowledge-base\/section\/([^\/]+)/i;
+      var url = $('.breadcrumb li:nth-child(4) a').attr('href');
+      if(exp.test(url))
+      {
+        $('.menu-support .dropdown.menu-knowledge-base a[href^="'+url+'"]').parents('li').addClass('active');
+      }
+
     }
   },
   // Home page

@@ -641,6 +641,7 @@ body.single-case-study{
                &:hover{
                   color: @link-hover-color;
                   background: #fff;
+                  .transition-duration(0.5s);
                }
             }
 
@@ -668,6 +669,15 @@ body.single-case-study{
                     -webkit-background-clip: text;
                        -moz-background-clip: text;
                             background-clip: text;
+               }
+            }
+
+            > li > a:hover,
+            > li > ul.dropdown-menu > li > a:hover{
+               .transition-duration(0.5s);
+
+               &:before{
+                  .transition-duration(0.5s);
                }
             }
 
@@ -752,6 +762,7 @@ body.single-case-study{
             &:hover{
                color: @link-hover-color;
                background: #fff;
+               .transition-duration(0.5s);
             }
          }
 
@@ -814,6 +825,8 @@ body.single-case-study{
 
    time:before{ content: '\f073'; }
    .byline:before{ content: '\f007'; }
+
+   a:hover{ text-decoration: none; }
 }
 
 .hentry{
@@ -824,10 +837,15 @@ body.single-case-study{
    padding-top: 20px;
 }
 
+.hentry .entry-title{
+   font-weight: 400;
+}
+
 body.archive.category,
 body.single-post,
 body.blog,
-body.archive.author{
+body.archive.author,
+body.search-results{
    .main{
       .pull-left;
 
@@ -848,7 +866,9 @@ body.archive.author{
    Frequently Asked Questions
    ========================================================================== */
 
-article.type-faq{
+// Archive
+body.archive article.type-faq,
+body.single .related-faqs article.type-faq{
    .panel;
    .panel-primary;
    border-width: 3px;
@@ -868,6 +888,17 @@ article.type-faq{
             color: #fff;
             display: block;
             text-decoration: none;
+            position: relative;
+
+            &:before{
+               position: absolute;
+               top: -3px;
+               right: 0;
+               font-size: 20px;
+               content: '\f138';
+               font-family: 'FontAwesome';
+               color: lighten(@link-color, 20%);
+            }
          }
 
          p{
@@ -884,83 +915,6 @@ article.type-faq{
       padding-bottom: 10px;
       background: #f0f0f0;
       #gradient > .vertical(#fdfdfd, #f0f0f0);
-
-      footer{
-         background: none;
-         border: none;
-         box-shadow: none;
-         padding: 0;
-
-         h3{
-            .h4;
-            margin: 0;
-            padding: 0;
-            margin-bottom: 10px;
-            font-weight: 300;
-         }
-
-         time,
-         .section,
-         .topics{
-            display: inline-block;
-            margin-right: 20px;
-            font-size: 13px;
-
-            &:before{
-               content: '\f138';
-               font-family: 'FontAwesome';
-               background-color: darken(@gray-lighter, 10%);
-               color: transparent;
-               text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
-                 -webkit-background-clip: text;
-                    -moz-background-clip: text;
-                         background-clip: text;
-               margin-right: 5px;
-            }
-         }
-
-         time:before{ content: '\f073'; }
-         .section:before{ content: '\f02d'; }
-         .topics:before{ content: '\f02c'; }
-
-         ul{
-            .row;
-            .nav;
-            margin-bottom: 10px;
-
-            li{
-               .make-sm-column(12);
-               .make-sm-column(6);
-
-               a{
-                  background: #f0f0f0;
-                  #gradient > .vertical(#fdfdfd, #f0f0f0);
-                  border-radius: @border-radius-base;
-                  border: 1px solid #E2E2E2;
-                  font-size: 13px;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  display: block;
-
-                  &:before{
-                     content: '\f059';
-                     font-family: 'FontAwesome';
-                     background-color: darken(@gray-lighter, 10%);
-                     color: transparent;
-                     text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
-                       -webkit-background-clip: text;
-                          -moz-background-clip: text;
-                               background-clip: text;
-                     margin-right: 10px;
-                     font-size: 150%;
-                     line-height: 0;
-                     position: relative;
-                     top: 2px;
-                  }
-               }
-            }
-         }
-      }
    }
 
    &+ article.type-faq{
@@ -970,15 +924,126 @@ article.type-faq{
 
    &:hover{
       border-color: @link-hover-color;
+      .transition-duration(0.5s);
 
       header{
          background-color: @link-hover-color;
+         .transition-duration(0.5s);
+
+         .entry-title a:before{
+            color: #fff;
+            .transition-duration(0.5s);
+         }
       }
 
       .entry-content{
          background: #fff;
+         .transition-duration(0.5s);
       }
    }
+}
+
+// Single / Acrhive
+article.type-faq{
+
+   .entry-content{
+
+      footer{
+         background: none;
+         border: none;
+         box-shadow: none;
+         padding: 0;
+      }
+   }
+
+   footer{
+
+      h3{
+         .h4;
+         margin: 0;
+         padding: 0;
+         margin-bottom: 10px;
+         font-weight: 300;
+      }
+
+      a:hover{ text-decoration: none; }
+
+      time,
+      .section,
+      .topics,
+      .link{
+         display: inline-block;
+         margin-right: 20px;
+         font-size: 13px;
+
+         &:before{
+            content: '\f138';
+            font-family: 'FontAwesome';
+            background-color: darken(@gray-lighter, 10%);
+            color: transparent;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+              -webkit-background-clip: text;
+                 -moz-background-clip: text;
+                      background-clip: text;
+            margin-right: 5px;
+         }
+      }
+
+      time:before{ content: '\f073'; }
+      .section:before{ content: '\f02d'; }
+      .topics:before{ content: '\f02c'; }
+      .link:before{ content: '\f0c1'; }
+
+      ul{
+         .row;
+         .nav;
+         margin-bottom: 10px;
+
+         li{
+            .make-sm-column(12);
+            .make-sm-column(6);
+
+            a{
+               background: #f0f0f0;
+               #gradient > .vertical(#fdfdfd, #f0f0f0);
+               border-radius: @border-radius-base;
+               border: 1px solid #E2E2E2;
+               font-size: 13px;
+               white-space: nowrap;
+               overflow: hidden;
+               display: block;
+
+               &:before{
+                  content: '\f059';
+                  font-family: 'FontAwesome';
+                  background-color: darken(@gray-lighter, 10%);
+                  color: transparent;
+                  text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+                    -webkit-background-clip: text;
+                       -moz-background-clip: text;
+                            background-clip: text;
+                  margin-right: 10px;
+                  font-size: 150%;
+                  line-height: 0;
+                  position: relative;
+                  top: 2px;
+               }
+            }
+         }
+      }
+   }
+}
+
+body.single article.type-faq footer{
+   .well-sm;
+
+   p{ 
+      margin-bottom: 0;
+   }
+}
+
+.related-faqs{
+   h3{ margin-bottom: 20px; }
 }
 
 /* ==========================================================================
@@ -1268,6 +1333,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .banner .jumbotron h1{ font-size: 36px; padding-top: 30px; }
    .header .banner .jumbotron h1 + p { font-size: 22px; line-height: 24px; }
    .header .banner .jumbotron .btn-lg{ font-size: 18px; }
+
+   // Sidebar
+   .sidebar{ margin-top: 20px; }
 
    // Footer widgets
    .footer .widgets section + section{ border-top: 6px solid #fff; }

@@ -1,4 +1,4 @@
-<article <?php post_class(); ?>>
+<article <?php post_class('faq-collapse'); ?>>
 	<header>
 	  <h2 class="entry-title">
 	  	<a data-toggle="collapse" href="#faq<?php the_ID(); ?>">
@@ -11,6 +11,7 @@
 	  <footer>
 	    <p>
 	    	<time class="published" datetime="<?php echo get_the_time('c'); ?>"><?php echo get_the_date(); ?></time>
+	    	<a class="link" href="<?=get_permalink(get_the_ID())?>">Permalink</a>
 	    	<?php $terms = wp_get_post_terms(get_the_ID(), 'faq-section'); if(!empty($terms)): ?>
 	    		<a class="section" href="<?=get_term_link($terms[0])?>"><?=$terms[0]->name?></a>
 	    	<?php endif; ?>

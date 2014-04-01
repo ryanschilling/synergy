@@ -28,9 +28,12 @@ function roots_title() {
       return single_cat_title('', false);
     }
   } elseif (is_search()) {
-    return sprintf(__('Search Results for %s', 'roots'), get_search_query());
+    $query = trim(get_search_query(), ' +');
+    return (!empty($query)) ? sprintf(__('Search Results for %s', 'roots'), $query) : __('Search Results', 'roots');
   } elseif (is_404()) {
     return __('Not Found', 'roots');
+  } elseif (is_singular('faq')) {
+    return 'FAQ: '.get_the_title();
   } else {
     return get_the_title();
   }
