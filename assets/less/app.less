@@ -502,6 +502,7 @@ body.single-case-study{
          .panel-body{ padding: 0; }
          .panel-body a{ position: relative; display: block; overflow: hidden; }
          .panel-body a > img{ width: 100%; height: auto; position: relative; z-index: 1; }
+         .panel-body iframe.video{ width: 100%; height: auto; display: block; min-height: 256px; }
          .panel-body a > .overlay{ color: #fff; width:100%; height:100%; position: absolute; z-index: 2; top: -100%; background: transparent; }
          .panel-body a > .overlay > .fa{ position: absolute; top: -100px; margin-top: -30px; width: 100%; }
          .panel-body a:hover > .overlay{ top:0; background: fadeout(darken(@brand-primary, 20%), 40%); .transition(background 0.5s); }
@@ -1068,7 +1069,7 @@ body.single-training-video .type-training-video{
       .panel-body a:hover > .overlay{ top:0; background: fadeout(darken(@brand-primary, 20%), 40%); .transition(background 0.5s); }
       .panel-body a:hover > .overlay > .fa{ top: 50%; .transition-duration(0.5s); }
 
-      iframe{ border: 0; display: block; }
+      iframe.video{ border: 0; display: block; }
    }
 
    footer{
@@ -1500,6 +1501,10 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       .panel{
          .make-sm-column(5);
          padding: 0;
+
+         .panel-body iframe.video{
+            min-height: 200px;
+         }
       }
 
       .description{
@@ -1562,7 +1567,16 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    // Menu
    .header .menu nav > ul > li > a{ font-size: 22px; padding: 22px 41px; }
 
-   .content iframe{ min-height: 450px; }
+   body.archive.category,
+   body.single-post,
+   body.blog,
+   body.archive.author,
+   body.search-results{
+      .main iframe{ min-height: 450px; }
+   }
+
+   // Training Video
+   body.single-training-video .type-training-video .panel .panel-body iframe.video{ min-height: 425px; }
 }
 
 
@@ -1575,4 +1589,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    
    // Menu
    .header .menu nav > ul > li > a{ padding: 22px 58px; }
+
+   // Training Video
+   body.single-training-video .type-training-video .panel .panel-body iframe.video{ min-height: 450px; }
 }
