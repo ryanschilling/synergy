@@ -50,7 +50,7 @@
 
       <ol class="carousel-indicators">
         <?php for($x=0;$x<3;$x++): ?>
-          <li data-target="#carousel-example-generic" data-slide-to="<?=$x?>" class="<?=$x==0 ? 'active' : ''?>"></li>
+          <li data-target="#carousel-home" data-slide-to="<?=$x?>" class="<?=$x==0 ? 'active' : ''?>"></li>
         <?php endfor; ?>
       </ol>
 
@@ -68,10 +68,10 @@
         <?php endfor; ?>
       </div>
 
-      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <a class="left carousel-control" href="#carousel-home" data-slide="prev">
         <span class="fa fa-3x fa-chevron-circle-left"></span>
       </a>
-      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <a class="right carousel-control" href="#carousel-home" data-slide="next">
         <span class="fa fa-3x fa-chevron-circle-right"></span>
       </a>
 
