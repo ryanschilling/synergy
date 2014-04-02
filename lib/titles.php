@@ -44,7 +44,7 @@ function roots_subtitle(){
   // Archive
   if(is_archive())
   {
-    $subtitle = is_author() ? '<p>'.get_the_author_meta('description').'</p>' : term_description();
+    $subtitle = is_author() ? '<p>'.substr(get_the_author_meta('description'), 0, 200).'</p>' : '<p>'.substr(strip_tags(term_description()), 0, 200).'</p>';
     return $subtitle;
   }
 

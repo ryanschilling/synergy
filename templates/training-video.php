@@ -15,13 +15,7 @@
     </div>
   </div>
   <div class="description">
-    <h2><?=$post->post_title; ?></h2>
+    <h2><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title; ?></a></h2>
     <?php the_excerpt(); ?>
-    <p>
-      <a href="<?=get_permalink($post->ID)?>" class="btn btn-lg btn-primary">
-        <i class="fa fa-fw fa-<?=get_field('embed_icon', $post->ID); ?>"></i>
-        <?=get_field('embed_button', $post->ID); ?>
-      </a>
-    </p>
   </div>
 </div>

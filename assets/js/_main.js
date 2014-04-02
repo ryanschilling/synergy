@@ -57,18 +57,42 @@ var Roots = {
         $('.menu-support .dropdown.menu-training-videos a[href^="'+url+'"]').parents('li').addClass('active');
       }
 
-    }
-  },
-  // Home page
-  home: {
-    init: function() {
-      // JavaScript to be fired on the home page
-    }
-  },
-  // About us page, note the change from about-us to about_us.
-  about_us: {
-    init: function() {
-      // JavaScript to be fired on the about us page
+      // For customer review widget make sure only one of the 3 reviews is shown
+      var n = Math.round(Math.random()*2);
+      if($('.widget_customer_review').length)
+      {
+        $('.widget_customer_review').find('blockquote.review').hide();
+        $('.widget_customer_review').find('blockquote.review:eq('+n+')').fadeIn(250);
+      }
+
+      // Add hover over on main nav menu
+      $('#menu-main-menu, #menu-utility-menu').find('li.dropdown').hover(function(){
+        if($(window).width() > 767){
+          $(this).addClass('open');
+        }
+      }, function(){
+        if($(window).width() > 767){
+          $(this).removeClass('open');
+        }
+      }).click(function(){
+          if($(window).width() > 767){
+            document.location = document.location.protocol + '//' + document.location.hostname + ($(this).find('a').first().attr('href'));
+          }
+      });
+
+      // Animate the customer reviews sidebar widget on product pages
+      if($('.widget_product_reviews').length && $('li.list-group-item','.widget_product_reviews').length > 2)
+      {
+        $('li.list-group-item', '.widget_product_reviews').first().hide();
+
+        setInterval(function(){
+          var context = $('.widget_product_reviews');
+          $('li.list-group-item', context).last().fadeOut(500, function(){
+            $('ul.list-group',context).prepend($(this));
+          });
+          $('li.list-group-item', context).first().slideDown(500);
+        }, 3000);
+      }
     }
   }
 };

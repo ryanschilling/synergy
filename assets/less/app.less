@@ -7,7 +7,7 @@
 @import "bootstrap/bootstrap.less";
 @import "lightbox/ekko-lightbox-3.1.1.less";
 @import "lightbox/themes/dark.less";
-
+@import "gravity-forms/bootstrap.less";
 
 
 /* ==========================================================================
@@ -142,6 +142,18 @@ body {
                   }
                }
 
+               > li.active > a{
+                  background: #f4f4f4;
+                  color: @link-color;
+
+                  &:hover,
+                  &:focus,
+                  &:active{
+                     color: @link-hover-color;
+                     background: #fff;
+                  }
+               }
+
                > li + li > a{
                   border-top: 1px solid #e7e7e7;
                }
@@ -185,8 +197,8 @@ body {
    Menu
    ========================================================================== */
    .menu{
-      background: url('../img/menu-tile.jpg') #434343 repeat-x;
-      height: 86px;
+      background: url('../img/menu-tile.jpg') #434343 repeat-x bottom center;
+      height: 76px;
 
       nav{
          padding-left: 0;
@@ -201,14 +213,14 @@ body {
             > li{
                border-left: 3px groove #888;
                border-left: 3px groove rgba(122, 122, 122, 0.44);
-               height: 80px;
+               height: 70px;
             }
 
             > li > a{
                color: #b4b4b4;
                font-size: 20px;
                padding: 22px 26px;
-               line-height: 36px;
+               line-height: 30px;
                font-weight: 600;
                text-shadow: -1px -1px 0 #3b3b3b;
 
@@ -289,7 +301,7 @@ body {
                .fa;
                .fa-fw;
                font-size: 28px;
-               line-height: 35px;
+               line-height: 29px;
 
                &:before{
                   .fa;
@@ -470,6 +482,12 @@ body {
       .panel-body a:hover > .overlay{ top:0; background: fadeout(darken(@brand-primary, 20%), 40%); .transition(background 0.5s); }
       .panel-body a:hover > .overlay > .fa{ top: 50%; .transition-duration(0.5s); }
    }
+
+   p img{
+      .img-thumbnail;
+      max-width: 100%;
+      height: auto;
+   }
 }
 
 // Full-width featured images
@@ -490,13 +508,15 @@ body.single-case-study{
    .block{
       .make-xs-column(12);
       .make-md-column(6);
+      margin-bottom: 20px;
 
       .panel{
          .panel-primary;
          border-width: 3px;
          margin-bottom: 0;
+         border-color: @gray;
 
-         .panel-heading{ .border-top-radius(0); }
+         .panel-heading{ .border-top-radius(0); background-color: @gray; border-color: @gray; }
          .panel-heading h3{ .panel-title; text-transform: uppercase; font-weight: 400; font-size: 14px; }
 
          .panel-body{ padding: 0; }
@@ -513,7 +533,22 @@ body.single-case-study{
       h2 + p{ font-weight: 300; font-size: 17px; margin-bottom: 20px; }
    }
 }
-body.home .blocks .block{ .make-md-column(4); }
+
+// Home page blocks
+body.home .blocks .block{
+   .make-md-column(4);
+   .panel{
+      border-color: @brand-primary;
+
+      .panel-heading{
+         border-color: @brand-primary;
+         background-color: @brand-primary;
+      }
+   }
+}
+
+// Clear fix for archive blocks
+body.archive .blocks .block:nth-child(2n+1){ clear: both; }
 
 .btn > .fa{ opacity: 0.5; }
 .btn:hover > .fa{ opacity: 1; }
@@ -540,6 +575,11 @@ body.home .blocks .block{ .make-md-column(4); }
          font-style: italic;
          color: @link-color;
       }
+   }
+
+   h2:first-child,
+   h3:first-child{
+      margin-top: 0;
    }
 }
 
@@ -762,11 +802,65 @@ body.home .blocks .block{ .make-md-column(4); }
          li + li > a{
             border-top: 1px solid #e2e2e2;
          }
+
+         &.list-group{
+            border: none;
+
+            > li.list-group-item{
+               margin: 0;
+               background: #f0f0f0;
+               #gradient > .vertical(#fdfdfd, #f0f0f0);
+               border-color: #e2e2e2;
+
+               & + li.list-group-item{
+                  border-top: 0;
+               }
+
+               > blockquote.review{
+                  border: none;
+                  padding: 8px;
+                  margin-bottom: 0;
+                  
+                  q{
+                     font-size: 15px;
+                     line-height: 19px;
+                     margin-bottom: 10px;
+                     display: block;
+                  }
+
+                  footer{
+                     text-align: right;
+                     display: block;
+                     font-size: 13px;
+                  }
+               }
+            }
+         }
       }
 
       &.widget_categories > h3:before{ content: '\f00b'; }
       &.widget_recent_entries > h3:before{ content: '\f017'; }
+      &.widget_product_reviews > h3:before{ content: '\f086'; }
+
+      &.widget_product_reviews{
+         .average-rating{
+            text-align: center;
+            padding-bottom: 15px;
+            padding-top: 10px;
+
+            .fa{
+               color: #e4d100;
+               font-size: 24px;
+            }
+
+            .text-muted{
+               padding-left: 5px;
+            }
+         }
+      }
    }
+
+   nav.sidebar-menu + section.widget{ margin-top: 30px; }
 }
 
 
@@ -1489,7 +1583,8 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .navbar-header .utility > ul > li > a{ padding: 10px 10px; }
    
    // Banner
-   .header .banner#carousel-home .jumbotron{ padding-left: 65px; padding-right: 65px; }
+   .header .banner#carousel-home .container{ width: 100%; padding: 0; }
+   .header .banner#carousel-home .jumbotron{ padding-left: 150px; padding-right: 150px; }
    .header .banner .jumbotron h1{ padding-top: 30px; }
    
    // Footer widgets
@@ -1509,9 +1604,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
    // Blocks
    .blocks .block{
-      .make-row();
-      padding: 0;
-      margin-left: 0;
 
       .panel{
          .make-sm-column(5);

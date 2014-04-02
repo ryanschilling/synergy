@@ -98,7 +98,7 @@ class Customer_Review_Widget extends WP_Widget {
             echo '<a href="'.$instance['linkedin'].'" target="_blank" class="type"><i class="fa fa-fw fa-linkedin"></i> Synergy Telecom, Inc.</a>';
             break;
           case 'google':
-            echo '<a href="'.$instance['google'].'" target="_blank" class="type"><i class="fa fa-fw fa-googleplus"></i> Google+</a>';
+            echo '<a href="'.$instance['google'].'" target="_blank" class="type"><i class="fa fa-fw fa-google-plus-square"></i> Google+</a>';
             break;
           case 'twitter':
             echo '<a href="'.$instance['twitter'].'" target="_blank" class="type"><i class="fa fa-fw fa-twitter"></i> @SynergyTelecom</a>';
@@ -109,9 +109,9 @@ class Customer_Review_Widget extends WP_Widget {
             echo '<a href="'.$instance['website'].'" target="_blank" class="type"><i class="fa fa-fw fa-globe"></i> SynergyTele.com</a>';
             break;
         }
-        echo '<p>';
-        echo substr(get_the_excerpt(), 0, 166) . '... ';
-        echo '</p>';
+        echo '<q>';
+        echo substr(trim(get_the_excerpt(),' "“”.'), 0, 166) . '...';
+        echo '</q>';
         echo '<footer>';
         if(get_field('review_source')):
           echo '<a target="_blank" href="'.get_field('review_source').'">';

@@ -1,1 +1,1 @@
-<?php get_template_part('archive-product.php'); ?>
+<?php get_template_part('archive-product'); ?>

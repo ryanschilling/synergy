@@ -22,7 +22,12 @@
       		echo 'VoIP Product';
       		break;
       	default:
-      		echo 'Article';
+      		if(is_page() && $column->post_parent):
+            $parent = get_post($column->post_parent);
+            echo $parent->post_title;
+          else:
+            echo 'Article';
+          endif;
       		break;
       } ?></h3>
     </div>

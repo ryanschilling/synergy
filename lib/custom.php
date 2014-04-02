@@ -163,7 +163,7 @@ function add_review_post_type() {
 			),
 			'description' => 'Reviews from Synergy Telecom customers.',
 			'public' => true,
-			'has_archive' => true,
+			'has_archive' => false,
 			'menu_position' => 5,
 			'hierarchical' => false,
 			'supports' => array(
