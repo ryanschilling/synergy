@@ -1,7 +1,7 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
-  <!--[if lt IE 8]>
+  <!--[if lt IE 9]>
     <div class="alert alert-warning">
       <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?>
     </div>
@@ -9,18 +9,12 @@
 
   <?php
     do_action('get_header');
-    // Use Bootstrap's navbar if enabled in config.php
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      get_template_part('templates/header-top-navbar');
-    } else {
-      get_template_part('templates/header');
-    }
-  ?>
-  
-  <?php
-  if(!is_front_page()):
-    get_template_part('templates/header-breadcrumbs');
-  endif;
+    
+    get_template_part('templates/header', 'menu');
+    
+    if(!is_front_page()):
+      get_template_part('templates/header', 'breadcrumbs');
+    endif;
   ?>
 
   <div class="wrap container" role="document">
@@ -28,7 +22,11 @@
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
+      <?php if( is_page_template('template-solutions.php')): ?>
+        <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+          <?php dynamic_sidebar('landing-widgets'); ?>
+        </aside><!-- /.sidebar -->
+      <?php elseif (roots_display_sidebar()) : ?>
         <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->

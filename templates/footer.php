@@ -17,7 +17,7 @@
   					the_post();
   					echo "<h3>Recent Blog Post</h3>";
   					the_excerpt();
-  					echo "<p><a class=\"btn btn-lg btn-primary\" href=\"".get_permalink()."\"><i class=\"fa fa-fw fa-comment\"></i> Contine reading</a></p>";
+  					echo "<p><a class=\"btn btn-lg btn-primary\" href=\"".get_permalink()."\"><i class=\"fa fa-fw fa-comment\"></i> Continue reading</a></p>";
   				endwhile;
   			endif;
 				rewind_posts();

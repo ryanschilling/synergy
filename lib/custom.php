@@ -228,7 +228,7 @@ function add_case_study_post_type() {
 			'menu_position' => 5,
 			'hierarchical' => true,
 			'supports' => array(
-				'title', 'editor', 'thumbnail', 'revisions', 'page-attributes',
+				'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes',
 			),
 			'taxonomies' => array(
 				'case-study-industry',
@@ -317,7 +317,7 @@ function add_faq_post_type() {
 			'hierarchical' => true,
 			'menu_position' => 5,
 			'supports' => array(
-				'title', 'revisions',
+				'title', 'revisions'
 			),
 			'taxonomies' => array(
 				'faq-section', 'faq-topic',
