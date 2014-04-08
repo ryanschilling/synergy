@@ -34,7 +34,11 @@
     font-weight: normal;
   }
 }
-.ginput_container input,
+.ginput_container input[type=text],
+.ginput_container input[type=phone],
+.ginput_container input[type=tel],
+.ginput_container input[type=number],
+.ginput_container input[type=email],
 .ginput_container select,
 .ginput_container textarea {
   .form-control();
@@ -60,7 +64,7 @@
   .gfield_label {
     color: @state-danger-text;
   }
-  input,
+  input[type=text],
   select,
   textarea {
     border-color: @alert-danger-border;
@@ -88,3 +92,6 @@
 .gform_validation_container{ display: none; }
 
 .ginput_container .instruction.validation_message{ .text-muted; font-weight: normal; }
+
+.gfield_checkbox > li > input{ display: inline-block; width: auto; margin-right: 10px; }
+.gfield_checkbox > li > label{ font-weight: normal; }
