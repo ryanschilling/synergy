@@ -15,8 +15,11 @@
   }
   .modal-header {
     border:0;
-    padding-left:0;
-    padding-right:0;
+    padding: 0;
+    position: relative;
+    border: 0;
+    min-height: 0;
+
     .close {
       .opacity(0.5);
       color: #fff;
@@ -24,11 +27,16 @@
       font-weight:100;
       margin-top:5px;
       &:hover { .opacity(1); }
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      margin:  0;
     }
     h4.modal-title {
       font-weight:100;
       color: #fff;
       padding:0;
+      display: none;
     }
   }
   .modal-body {

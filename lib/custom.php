@@ -147,6 +147,16 @@ add_action( 'init', 'add_product_post_type' );
 /**
  * Create Reviews post type
  */
+function review_singular_redirect() {
+  	if ( is_singular('review') && !is_user_logged_in()) {
+		global $wp_query;
+ 
+		wp_redirect( home_url( '/reviews' ) );
+		exit();
+	}
+}
+add_action('template_redirect', 'review_singular_redirect' );
+
 function add_review_post_type() {
 	register_post_type( 'review',
 		array(
@@ -163,14 +173,14 @@ function add_review_post_type() {
 			),
 			'description' => 'Reviews from Synergy Telecom customers.',
 			'public' => true,
-			'has_archive' => false,
+			'has_archive' => true,
 			'menu_position' => 5,
 			'hierarchical' => false,
 			'supports' => array(
 				'title', 'editor', 'thumbnail', 'revisions',
 			),
 			'rewrite' => array(
-				'slug' => 'products/reviews',
+				'slug' => 'reviews',
 				'hierarchical' => false
 			),
 			'menu_icon' => 'dashicons-star-half',

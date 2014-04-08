@@ -1,6 +1,6 @@
 <?php if (!have_posts()) : ?>
   <div class="alert alert-warning">
-    <?php _e('Sorry, there no FAQs in the knowledge base at this time.', 'roots'); ?>
+    <?php _e('Sorry, there are no FAQs in the knowledge base at this time.', 'roots'); ?>
   </div>
   <?php get_search_form(); ?>
 <?php endif; ?>

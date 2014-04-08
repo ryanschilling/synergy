@@ -668,13 +668,55 @@ body.home .blocks .block{
 }
 
 // Clear fix for archive blocks
-body.archive .blocks .block:nth-child(2n+1){ clear: both; }
+body.archive,
+body.single-product{
+   .blocks .block:nth-child(2n+1){ clear: both; }
+}
 
 .btn > .fa{ opacity: 0.5; }
 .btn:hover > .fa{ opacity: 1; }
 
 
+/* ==========================================================================
+   Reviews
+   ========================================================================== */
 
+.hentry.review{
+   
+   blockquote{
+      .well;
+      border-radius: @border-radius-base;
+      border: 1px solid #e2e2e2;
+      overflow: hidden;
+      background: #f0f0f0;
+      #gradient > .vertical(#fdfdfd, #f0f0f0);
+      .text-muted;
+      margin: 0;
+
+      footer{
+         padding: 0;
+         background: none;
+         border: none;
+         .box-shadow(none);
+         margin: 0;
+         padding-top: 10px;
+
+         .rating{
+            color: #e4d100;
+            font-size: 24px;
+            margin-top: 5px;
+         }
+      }
+   }
+
+   &:nth-child(even){
+      blockquote{ text-align: right; }
+   }
+
+   &:nth-child(odd){
+      blockquote{ text-align: left; }
+   }
+}
 
 /* ==========================================================================
    Primary Content
@@ -697,8 +739,8 @@ body.archive .blocks .block:nth-child(2n+1){ clear: both; }
       }
    }
 
-   h2:first-child,
-   h3:first-child{
+   > h2:first-child,
+   > h3:first-child{
       margin-top: 0;
    }
 }
@@ -963,6 +1005,7 @@ body.archive .blocks .block:nth-child(2n+1){ clear: both; }
       &.widget_product_reviews > h3:before,
       &.widget_customer_review > h3:before{ content: '\f086'; }
       &.widget_subscribe_form > h3:before{ content: '\f01c'; }
+      &.widget_featured_product > h3:before{ content: '\f130'; }
 
       &.widget_product_reviews{
          .average-rating{
@@ -1060,6 +1103,32 @@ body.archive .blocks .block:nth-child(2n+1){ clear: both; }
 
          .hidden-xs{
             display: none !important;
+         }
+      }
+
+      &.widget_featured_product{
+         .product{
+            padding: 10px 15px;
+            padding-top: 15px;
+            margin: 0;
+            margin-top: 15px;
+            background: #f0f0f0;
+            #gradient > .vertical(#fdfdfd, #f0f0f0);
+            border-color: #e2e2e2;
+            border: 1px solid #E2E2E2;
+            border-radius: @border-radius-base;
+            position: relative;
+
+            .featured-image{
+               border-color: @gray-lighter;
+               border-width: 1px;
+               margin: 0;
+               margin-bottom: 20px;
+
+               img{
+                  border-radius: @border-radius-base;
+               }
+            }
          }
       }
    }
@@ -1176,6 +1245,14 @@ body.search-results{
          width: 100%;
       }
    }
+}
+
+/* ==========================================================================
+   Case Studies
+   ========================================================================== */
+
+body.archive .hentry.case-study{
+   .featured-image .panel-body a > img{ width: 254px; height: auto; }
 }
 
 /* ==========================================================================

@@ -57,6 +57,13 @@ var Roots = {
         $('.menu-support .dropdown.menu-training-videos a[href^="'+url+'"]').parents('li').addClass('active');
       }
 
+      // For markets pages make sure that the sidebar menu item is highlighted
+      exp = /^\/solutions\/industries/i;
+      if(exp.test(window.location.pathname))
+      {
+        $('.menu-solutions .menu-voip-industries').addClass('active');
+      }
+
       // For customer review widget make sure only one of the 3 reviews is shown
       var n = Math.round(Math.random()*2);
       if($('.widget_customer_review').length)

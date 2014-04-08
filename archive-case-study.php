@@ -1,6 +1,6 @@
 <?php if (!have_posts()) : ?>
   <div class="alert alert-warning">
-    <?php _e('Sorry, there no case studies available at this time.', 'roots'); ?>
+    <?php _e('Sorry, there are no case studies available at this time.', 'roots'); ?>
   </div>
   <?php get_search_form(); ?>
 <?php endif; ?>
