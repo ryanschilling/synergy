@@ -323,7 +323,7 @@ body {
    ========================================================================== */
    .banner{
       .carousel;
-      background: url('../img/banner-tile.jpg') repeat-x top center;
+      background: url('../img/banner-tile.jpg') repeat-x center center;
       border-bottom: 6px solid #fff;
       max-height: 367px;
       overflow: hidden;
@@ -334,7 +334,7 @@ body {
       &#carousel-home .jumbotron{ height: 373px; }
       &#carousel-home .jumbotron{ padding-left: 65px; padding-right: 65px; }
       &#carousel-page .jumbotron,
-      &#carousel-landing .jumbotron{ margin-bottom: 45px; }
+      &#carousel-landing .jumbotron{ padding-bottom: 45px; margin-bottom: 0; background-size: 100%; }
 
       .carousel-control{
          color: @link-hover-color;
@@ -511,7 +511,7 @@ body {
       padding-bottom: 20px;
 
       > li{
-         display: block;
+         display: none;
          width: 100%;
 
          > a{
@@ -567,6 +567,54 @@ body {
                   padding-left: 3px;
                }
             }
+         }
+
+         &:first-child{
+            display: block;
+         }
+      }
+   }
+
+   #carousel-products{
+      padding-bottom: 45px;
+      .hidden-xs;
+
+      .carousel-indicators{
+         bottom: 0;
+         margin-bottom: 0;
+         background: #fff;
+         .border-top-radius(@border-radius-base);
+         padding: 10px 0;
+         padding-bottom: 5px;
+         width: 30%;
+         margin-left: -15%;
+
+         li{
+            border-color: @brand-danger;
+
+            &.active{
+               background-color: @brand-danger;
+            }
+         }
+      }
+
+      .product{
+         .featured-image{
+            .panel;
+            .panel-primary;
+            border-width: 3px;
+            margin-bottom: 20px;
+
+            .panel-heading{ .border-top-radius(0); }
+            .panel-heading h3{ .panel-title; text-transform: uppercase; font-weight: 400; font-size: 14px; }
+
+            .panel-body{ padding: 0; }
+            .panel-body a{ position: relative; display: block; overflow: hidden; }
+            .panel-body a > img{ width: 100%; height: auto; position: relative; z-index: 1; }
+            .panel-body a > .overlay{ color: #fff; width:100%; height:100%; position: absolute; z-index: 2; top: -100%; background: transparent; }
+            .panel-body a > .overlay > .fa{ position: absolute; top: -100px; margin-top: -30px; width: 100%; }
+            .panel-body a:hover > .overlay{ top:0; background: fadeout(darken(@brand-primary, 20%), 40%); .transition(background 0.5s); }
+            .panel-body a:hover > .overlay > .fa{ top: 50%; .transition-duration(0.5s); }
          }
       }
    }
@@ -1136,6 +1184,108 @@ body.single-product{
    nav.sidebar-menu + section.widget{ margin-top: 30px; }
 }
 
+
+/* ==========================================================================
+   Product Landing Page
+   ========================================================================== */
+
+body.template-products{
+
+   .btn-android,
+   .btn-apple{
+      background: @gray-dark;
+      text-align: left;
+      color: @gray-light;
+      padding-left: 45px;
+      font-size: 14px;
+      padding-right: 30px;
+      border-color: #000;
+
+      strong{
+         color: #fff;
+         font-size: 18px;
+         display: inline-block;
+      }
+
+      &:before{
+         display: block;
+         width: 10px;
+         position: relative;
+         left: -30px;
+         float: left;
+         font-family: 'FontAwesome';
+         font-size: 32px;
+      }
+
+      &:hover{
+         background: @gray;
+      }
+   }
+
+   .btn-android:before{
+      content: '\f17b';
+      color: #7eb922;
+   }
+
+   .btn-apple:before{
+      content: '\f179';
+      color: @gray-lighter;
+   }
+
+   .software-apps,
+   .mobile-apps{
+      .make-xs-column(12);
+      .make-md-column(6);
+   }
+
+   .software-apps{
+
+      h2 + p{
+         margin-bottom: 20px;
+      }
+
+      .media{
+         border-top: 2px solid #D6D6D6;
+         padding-top: 30px;
+
+         .media-thumb{
+            .pull-left;
+            margin-right: 20px;
+         }
+      }
+   }
+
+   .mobile-apps{
+      h2,
+      h2 + p{
+         position: relative;
+         z-index: 2;
+      }
+
+      h2 + p{
+         padding-right: 50%;
+      }
+
+      .mobile-phones{
+         position: relative;
+         z-index: 1;
+         text-align: right;
+
+         img{
+            width: 100%;
+            max-width: 556px;
+            height: auto;
+            margin-top: -240px;
+         }   
+      }
+   }
+
+   hr{
+      border: 1px solid #D6D6D6;
+      margin-top: 30px;
+      margin-bottom: 30px;
+   }
+}
 
 
 /* ==========================================================================
@@ -1795,7 +1945,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .banner .item{ height: auto; }
    .header .banner .jumbotron{ padding-left: 15px; padding-right: 15px; text-align: center; height: auto; padding-bottom: 50px; margin-bottom: 0; }
    .header .banner#carousel-page .jumbotron,
-   .header .banner#carousel-landing .jumbotron{ margin-bottom: 0; padding-bottom: 30px; }
+   .header .banner#carousel-landing .jumbotron{ margin-bottom: 0; padding-bottom: 30px; background-size: auto 100%; }
    .header .banner .jumbotron h1,
    .header .banner.video .jumbotron h1{ font-size: 36px; padding-top: 30px; }
    .header .banner .jumbotron h1 + p { font-size: 22px; line-height: 24px; }
@@ -1803,7 +1953,8 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .banner.video .jumbotron .player{ padding: 0; }
 
    // Breadcrumbs
-   body.template-solutions{
+   body.template-solutions,
+   body.template-products{
 
       .breadcrumbs.hidden-xs{
          display: block !important;
@@ -1868,6 +2019,17 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
    // Featured image on pages and posts
    .content .featured-image{ width: 100%; float: none; margin: 0; margin-bottom: 20px; }
+
+   // Android/Apple buttons
+   .btn-group .btn-android{
+      border-radius: @border-radius-base !important;
+      border: 1px solid #000;
+      margin-top: 10px;
+   }
+   .btn-group .btn-apple{
+      border-radius: @border-radius-base !important;
+      border: 1px solid #000;
+   }
 }
 
 
@@ -1896,6 +2058,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .breadcrumbs{
       ul.landing > li > a{ float: none; display: none; }
       ul.landing > li > ul.dropdown-menu{ float: none; display: block; }
+      ul.landing > li > ul.dropdown-menu > li > a{ padding: 3px 15px; }
    }
 
    // Footer widgets
@@ -1973,6 +2136,18 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    footer .next-video,
    footer .prev-video{
       .description h3{ .h4; margin: 0; }
+   }
+
+   // Android/Apple buttons
+   .btn-group .btn-android{
+      border-radius: @border-radius-base !important;
+      border: 1px solid #000;
+      margin-top: 10px;
+   }
+
+   .btn-group .btn-apple{
+      border-radius: @border-radius-base !important;
+      border: 1px solid #000;
    }
 }
 

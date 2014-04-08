@@ -1,7 +1,7 @@
 <?php if(has_post_thumbnail()): $img = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full'); ?>
 	<div class="featured-image">
 		<div class="panel-body">
-			<?php if(is_archive()): ?>
+			<?php if(is_archive() || is_page_template('template-products.php')): ?>
 			<a href="<?php the_permalink(); ?>">
 			<?php else: ?>
 			<a href="<?php echo $img[0]; ?>" data-toggle="lightbox" data-gallery="gallery-<?=$post->ID?>" data-parent=".content" data-type="image">
@@ -21,7 +21,7 @@
 						break;
 				}
 				the_post_thumbnail($size); ?>
-				<div class="overlay"><i class="fa fa-fw fa-4x fa-<?=(is_archive()) ? get_field('embed_icon') : 'search-plus'; ?>"></i></div>
+				<div class="overlay"><i class="fa fa-fw fa-4x fa-<?=(is_archive() || is_page_template('template-products.php')) ? get_field('embed_icon') : 'search-plus'; ?>"></i></div>
 			</a>
 		</div>
 	</div>

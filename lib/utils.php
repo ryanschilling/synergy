@@ -28,3 +28,86 @@ function is_tree( $pid ) {      // $pid = The ID of the page we're looking for p
 
     return false;  // we arn't at the page, and the page is not an ancestor
 }
+
+function get_the_section(){
+  global $post;
+  $section = '';
+
+  // About section
+  if(
+    is_page(array(115, 386, 389))
+  ){
+    $section = 'about';
+
+  // Solutions section
+  }elseif(
+    is_page(2) ||
+    is_tree(2) ||
+    is_singular(array(
+      'case-study'
+      )
+    ) ||
+    is_post_type_archive(array(
+      'case-study',
+      )
+    ) ||
+    is_tax(array(
+      'case-study-industry',
+      )
+    )
+  ){
+    $section = 'solutions';
+
+  // Products section
+  }elseif(
+    is_page(88) ||
+    is_singular(array(
+      'review',
+      'product'
+      )
+    ) ||
+    is_post_type_archive(array(
+      'product',
+      'review'
+      )
+    ) ||
+    is_tax(array(
+      'product-type',
+      'product-manufacturer',
+      'product-feature'
+      )
+    )
+  ){
+    $section = 'products';
+
+  // Partners section
+  }elseif(
+    is_tree(95)
+  ){
+    $section = 'partners';
+
+  // Support section
+  }elseif(
+    is_tree(105) ||
+    is_singular(array(
+      'faq',
+      'training-video'
+      )
+    ) ||
+    is_post_type_archive(array(
+      'faq',
+      'training-video'
+      )
+    ) ||
+    is_tax(array(
+      'faq-section',
+      'faq-topic',
+      'training-video-series'
+      )
+    )
+  ){
+    $section = 'support';
+  }
+
+  return $section;
+}
