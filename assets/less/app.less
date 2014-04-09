@@ -1703,6 +1703,46 @@ body.single-training-video .type-training-video{
          p{ font-size: 15px; padding-left: 20px; }
          form{ padding-left: 20px; }
       }
+
+      .widget_check_for_service,
+      .widget_build_voip_system,
+      .widget_switch_to_voip{
+         .make-xs-column(12);
+         .make-sm-column(6);
+         padding-top: 30px;
+         padding-bottom: 30px;
+         min-height: 173px;
+
+         h3{ margin-bottom: 15px; margin-top:0; }
+         p{
+            font-size: 15px;
+            padding-left: 80px;
+            margin-bottom: 0;
+            &:before{
+               font-size: 48px;
+               color: @gray;
+               font-family: "FontAwesome";
+               width: 0;
+               float: left;
+               position: relative;
+               left: -80px;
+            }
+         }
+      }
+
+      .widget_check_for_service{
+         background: url('../img/widget-bg-map.jpg') no-repeat top right;
+         p:before{ content: '\f012'; }
+      }
+      .widget_build_voip_system{
+         background: url('../img/widget-bg-cables.jpg') no-repeat top left;
+         p:before{ content: '\f085'; }
+      }
+
+      .widget_switch_to_voip{
+         background: url('../img/widget-bg-network.jpg') no-repeat top right;
+         p:before{ content: '\f074'; }
+      }
    }
 
 
@@ -2025,10 +2065,12 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       border-radius: @border-radius-base !important;
       border: 1px solid #000;
       margin-top: 10px;
+      clear: left;
    }
    .btn-group .btn-apple{
       border-radius: @border-radius-base !important;
       border: 1px solid #000;
+      clear: left;
    }
 }
 
@@ -2063,7 +2105,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
    // Footer widgets
    .footer .widgets .widget_customer_review,
-   .footer .widgets .widget_subscribe_form{ background-size: 100% auto; padding-left: 0; }
+   .footer .widgets .widget_subscribe_form,
+   .footer .widgets .widget_build_voip_system,
+   .footer .widgets .widget_check_for_service{ background-size: 100% auto; padding-left: 0; }
    .footer .widgets .widget_customer_review .review .type{ display: none; }
    .footer .widgets .widget_subscribe_form{
       h3, p, form{ padding-left: 0; }
