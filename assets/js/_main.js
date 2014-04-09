@@ -28,6 +28,17 @@ var Roots = {
         return $(this).ekkoLightbox();
       });
 
+      if($(window).width() > 767)
+      {
+        $(window).resize(function(){
+          var container_width = $('.header .menu > .container').width() - 8;
+          $('#menu-main-menu > .menu-solutions > .dropdown-menu').width(container_width);
+        }).trigger('resize');
+      
+        // Enable dropdown menus
+        $('#menu-main-menu > .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
+      }
+
       // Open first collapsible paragraph
       $('.faq-collapse').first().find('a[data-toggle="collapse"]').trigger('click');
 
