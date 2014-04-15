@@ -13,6 +13,14 @@ function is_element_empty($element) {
   return empty($element) ? false : true;
 }
 
+function get_menu_block($id, $template='menu-block') {
+  global $item;
+  $item = get_post($id);
+  if(!empty($item)):
+    get_template_part('templates/partial', $template);
+  endif;
+}
+
 function is_tree( $pid ) {      // $pid = The ID of the page we're looking for pages underneath
     global $post;               // load details about this page
 
