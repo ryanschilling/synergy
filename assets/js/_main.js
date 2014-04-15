@@ -28,15 +28,26 @@ var Roots = {
         return $(this).ekkoLightbox();
       });
 
+      // Superdropdown binding
       if($(window).width() > 767)
       {
         $(window).resize(function(){
-          var container_width = $('.header .menu > .container').width() - 8;
-          $('#menu-main-menu > .menu-solutions > .dropdown-menu').width(container_width);
+          var container_width = $('#menu-main-menu').width();
+          var container_offset = $('#menu-main-menu').offset().left;
+          $('#menu-main-menu > .menu-solutions > .dropdown-menu,'+
+              '#menu-main-menu > .menu-products > .dropdown-menu'
+          ).each(function(){
+            var li_offset = $(this).parents('li.dropdown').offset().left;
+            $(this).css({
+              'left': -li_offset + container_offset,
+              'width': container_width
+            });
+          });
         }).trigger('resize');
       
         // Enable dropdown menus
         $('#menu-main-menu > .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
+        $('#menu-main-menu > .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
       }
 
       // Open first collapsible paragraph

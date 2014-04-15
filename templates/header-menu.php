@@ -47,6 +47,8 @@
 
   <?php get_template_part('templates/dropdown', 'solutions'); ?>
 
+  <?php get_template_part('templates/dropdown', 'products'); ?>
+
   <?php get_template_part('templates/header', 'banner'); ?>
 
 </header>
