@@ -35,7 +35,8 @@ var Roots = {
           var container_width = $('#menu-main-menu').width();
           var container_offset = $('#menu-main-menu').offset().left;
           $('#menu-main-menu > .menu-solutions > .dropdown-menu,'+
-              '#menu-main-menu > .menu-products > .dropdown-menu'
+              '#menu-main-menu > .menu-products > .dropdown-menu,'+
+              '#menu-main-menu > .menu-support > .dropdown-menu'
           ).each(function(){
             var li_offset = $(this).parents('li.dropdown').offset().left;
             $(this).css({
@@ -48,6 +49,7 @@ var Roots = {
         // Enable dropdown menus
         $('#menu-main-menu > .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
         $('#menu-main-menu > .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
+         $('#menu-main-menu > .menu-support > .dropdown-menu').html($('#menu-support-dropdown').html());
       }
 
       // Open first collapsible paragraph

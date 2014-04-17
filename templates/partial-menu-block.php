@@ -1,6 +1,6 @@
 <?php global $item; ?>
 <div class="menu-block">
-  <h3><?=$item->post_title?></h3>
+  <h3> <a href="<?=get_permalink($item->ID)?>"><?=$item->post_title?></a></h3>
   <div class="panel">
     <div class="panel-body">
       <a href="<?=get_permalink($item->ID)?>">

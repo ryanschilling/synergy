@@ -357,6 +357,22 @@ body {
             &:nth-child(2n+1){
                clear: left;
             }
+
+            .panel{
+               width: 125px;
+               height: 125px;
+               float: left;
+               margin-top: 20px;
+
+               img{
+                  width: 125px;
+                  height: 125px;
+               }
+            }
+
+            .description{
+               margin-left: 145px;
+            }
          }
       }
    }
@@ -407,11 +423,13 @@ body {
       }
    }
    #menu-solutions-dropdown,
-   #menu-products-dropdown{
+   #menu-products-dropdown,
+   #menu-support-dropdown{
       display: none;
    }
    #menu-main-menu > .menu-solutions > ul.dropdown-menu,
-   #menu-main-menu > .menu-products > ul.dropdown-menu{
+   #menu-main-menu > .menu-products > ul.dropdown-menu,
+   #menu-main-menu > .menu-support > ul.dropdown-menu{
       padding: 0;
    }
 
@@ -2352,7 +2370,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .blocks .block .panel .panel-body .featured_video_plus{ height: 236px; }
 
    // Convert markets/industries to columns
-   .header .menu-dropdown ul.nav > li{
+   .header .menu-solutions .menu-dropdown ul.nav > li{
       width:50%;
       float: left;
 

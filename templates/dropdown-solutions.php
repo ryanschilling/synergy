@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-12">
             <?php $item = get_post(25); // Industries ?>
-            <h3><?=$item->post_title?></h3>
+            <h3><a href="<?=get_permalink($item->ID)?>"><?=$item->post_title?></a></h3>
             <p>
               <?=($item->post_excerpt) ? $item->post_excerpt : substr(strip_tags($item->post_content), 0, 200).'...'?>
               <a href="<?=get_permalink($item->ID)?>">
@@ -24,7 +24,7 @@
             </ul>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-12">
-            <h3>Case Studies</h3>
+            <h3><a href="<?=get_post_type_archive_link('case-study')?>">Case Studies</a></h3>
             <?php $item = get_post(274); // Atlee Development ?>
             <p><?=($item->post_excerpt) ? $item->post_excerpt : substr(strip_tags($item->post_content), 0, 200).'...'?></p>
             <p>
