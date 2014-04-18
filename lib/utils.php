@@ -90,7 +90,8 @@ function get_the_section(){
 
   // Partners section
   }elseif(
-    is_tree(95)
+    is_tree(95) ||
+    is_page(883)
   ){
     $section = 'partners';
 
