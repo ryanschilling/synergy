@@ -1530,6 +1530,36 @@ body.archive .hentry.case-study{
 }
 
 /* ==========================================================================
+   Build VoIP System
+   ========================================================================== */
+
+body.template-order-online{
+   .product{
+      margin-bottom: 20px;
+      margin-top: 10px;
+
+      .panel{
+         .panel-primary;
+         border-width: 3px;
+         margin-bottom: 10px;
+
+         .panel-body{ padding: 0; }
+         .panel-body a{ position: relative; display: block; overflow: hidden; }
+         .panel-body a > img{ width: 100%; height: auto; position: relative; z-index: 1; }
+         .panel-body a > .overlay{ color: #fff; width:100%; height:100%; position: absolute; z-index: 2; top: -100%; background: transparent; }
+         .panel-body a > .overlay > .fa{ position: absolute; top: -100px; margin-top: -30px; width: 100%; }
+         .panel-body a:hover > .overlay{ top:0; background: fadeout(darken(@brand-primary, 20%), 40%); .transition(background 0.5s); }
+         .panel-body a:hover > .overlay > .fa{ top: 50%; .transition-duration(0.5s); }
+      }
+
+      h3{
+         .h4;
+         margin-bottom: 10px;
+      }
+   }
+}
+
+/* ==========================================================================
    Frequently Asked Questions
    ========================================================================== */
 
@@ -1808,7 +1838,7 @@ body.single-training-video .type-training-video{
          padding-top: 15px;
          min-height: 193px;
 
-         blockquote{ border-left: 6px solid #5E5E5E; padding-top: 0; padding-bottom: 0; margin-top: 15px; margin-bottom: 0; }
+         blockquote{ border-left: 6px solid #5E5E5E; padding-top: 0; padding-bottom: 0; margin-top: 15px; margin-bottom: 15px; }
          blockquote > p{ font-size: 15px; }
          blockquote > footer{ font-weight: 600; }
 
@@ -2281,6 +2311,8 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .content .featured-image{ width: 100%; float: none; margin: 0; margin-bottom: 20px; }
    body.archive .hentry.case-study .featured-image .panel-body a>img{ height: auto; width: 100%; }
 
+   // Order online product clear
+   body.template-order-online .product:nth-child(2n+1){ clear: left; }
 }
 
 
@@ -2319,6 +2351,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       border-radius: @border-radius-base !important;
       border: 1px solid #000;
    }
+
+   // Order online product clear
+   body.template-order-online .product:nth-child(3n+1){ clear: left; }
 }
 
 
@@ -2386,4 +2421,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .menu-dropdown .menu-block.type:nth-child(3n+1){
       clear: left;
    }
+
+   // Order online product clear
+   body.template-order-online .product:nth-child(4n+1){ clear: left; }
 }

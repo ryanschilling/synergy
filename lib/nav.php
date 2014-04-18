@@ -61,7 +61,7 @@ function roots_nav_menu_css_class($classes, $item) {
   $new_classes[] = 'menu-' . $slug;
   $new_class_counts = array_count_values($new_classes);
   $new_classes = array_unique($new_classes);
-  if($new_class_counts['active'] < 2 && array_search('current-menu-item', $classes) === false)
+  if(isset($new_class_counts['active']) && $new_class_counts['active'] < 2 && array_search('current-menu-item', $classes) === false)
   {
     unset($new_classes[array_search('active', $new_classes)]);
   }

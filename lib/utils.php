@@ -37,6 +37,20 @@ function is_tree( $pid ) {      // $pid = The ID of the page we're looking for p
     return false;  // we arn't at the page, and the page is not an ancestor
 }
 
+function sanitize(array $arr1)
+{
+  $arr2 = array();
+  foreach($arr1 as $k => $v)
+  {
+    $v = is_array($v) ? sanitize($v) : $v;
+    if(!empty($v))
+    {
+      $arr2[$k] = $v;
+    }
+  }
+  return $arr2;
+}
+
 function get_the_section(){
   global $post;
   $section = '';

@@ -28,6 +28,19 @@ var Roots = {
         return $(this).ekkoLightbox();
       });
 
+      // Increment/decrement product counter on build a system page
+      $('.counter-minus').click(function(){
+        var counter = $(this).parents('.input-group').find('.counter');
+        var count = counter.val() * 1;
+        count = Math.max(0, count-1);
+        counter.val(count);
+      });
+      $('.counter-plus').click(function(){
+        var counter = $(this).parents('.input-group').find('.counter');
+        var count = counter.val() * 1;
+        counter.val(count + 1);
+      });
+
       // Superdropdown binding
       if($(window).width() > 767)
       {
@@ -49,7 +62,7 @@ var Roots = {
         // Enable dropdown menus
         $('#menu-main-menu > .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
         $('#menu-main-menu > .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
-         $('#menu-main-menu > .menu-support > .dropdown-menu').html($('#menu-support-dropdown').html());
+        $('#menu-main-menu > .menu-support > .dropdown-menu').html($('#menu-support-dropdown').html());
       }
 
       // Open first collapsible paragraph
