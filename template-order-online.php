@@ -3,6 +3,7 @@
 Template Name: Order Online Page
 */
 
+$_GET['debug'] = 'testmode';
 error_reporting(E_ALL);
 ini_set('display_errors', isset($_GET['debug']) && $_GET['debug'] == 'testmode');
 
@@ -23,6 +24,7 @@ $non_product_fields = array(
 	'Address', 'City', 'State', 'Zip_Code',
 	'Support_Feature', 'Software_Addon', $honey_pot_field,
 );
+$valid_extensions = array('jpg','jpeg','doc','docx','pdf','gif','png');
 $missing = false;
 $missings = array();
 $spam = false;
@@ -40,6 +42,25 @@ if(!empty($_POST))
 		{
 			$missing = true;
 			$missings[] = str_replace('_', ' ', $field);
+		}
+	}
+
+	// Check for uploads
+	$attachments = array();
+	if(!empty($_FILES))
+	{
+		foreach($_FILES as $file)
+		{
+			$name = explode('.', strtolower($file['name']));
+			$extension = end($name);
+			if(in_array($extension, $valid_extensions))
+			{
+				$tmp_path = WP_CONTENT_DIR.'/uploads/'.md5(uniqid()).'.'.$extension;
+				if(move_uploaded_file($file['tmp_name'], $tmp_path))
+				{
+					$attachments[] = $tmp_path;
+				}
+			}
 		}
 	}
 
@@ -84,7 +105,7 @@ if(!empty($_POST))
 		$msg .= '<th width="25%" style="vertical-align:top;">Support Features</th>';
 		$msg .= '<td width="25%"><ul><li>'.implode('</li><li>',$form['Support_Feature']).'</li></ul></td>';
 		$msg .= '<th width="25%" style="vertical-align:top;">Software Addons</th>';
-		$msg .= '<td width="25%"><ul><li>'.implode('</li></li>',$form['Software_Addon']).'</li></ul></td>';
+		$msg .= '<td width="25%"><ul><li>'.implode('</li><li>',$form['Software_Addon']).'</li></ul></td>';
 		$msg .= '</tr>';
 
 		$msg .= '<tr>';
@@ -105,16 +126,31 @@ if(!empty($_POST))
 		$msg .= '</tr>';
 
 		$msg .= '</table>';
+		$msg .= '<br><br>';
 		$msg .= '</body>';
 		$msg .= '</html>';
 
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$headers .= 'To: "'.$organization.'" <'.$to.'>' . "\r\n";
 		$headers .= 'From: "'.$form['Customer_Name'].'" <'.$form['Email_Address'].'>' . "\r\n";
 
-		mail($to, $subject, $msg, $headers);
+		function set_mail_content_type() {
+			return 'text/html';
+		}
 
+		add_filter( 'wp_mail_content_type', 'set_mail_content_type' );
+		wp_mail($to, $subject, $msg, $headers, $attachments);
+		remove_filter( 'wp_mail_content_type', 'set_mail_content_type' );
+
+		if(!empty($attachments))
+		{
+			foreach($attachments as $file)
+			{
+				@unlink($file);
+			}
+		}
+		
 		header('Location: /support/thank-you');
 		exit();
 	}
@@ -286,7 +322,7 @@ endwhile;
 					    <input name="Zip Code" type="text" class="form-control" value="<?=isset($form['Zip_Code']) ? $form['Zip_Code'] : null?>">
 					</div>
 				</div>
-				<?php /*<div class="row">
+				<div class="row">
 					<div class="form-group col-xs-12">
 					    <div class="well">
 						    <label class="control-label">Upload a copy of your current phone bill</label>
@@ -294,7 +330,6 @@ endwhile;
 						</div>
 					</div>
 				</div>
-				*/?>
 			</div>
 		</div>
 	</div>
