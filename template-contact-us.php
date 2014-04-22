@@ -12,7 +12,6 @@ Template Name: Contact Us Page
 		<?php endwhile; ?>
 	</div>
 	<div class="col-sm-6">
-		<br>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 		<div class="img-thumbnail" style="width:100%;">
 			<div style="overflow:hidden;height:400px;width:100%;">
