@@ -126,6 +126,44 @@ var Roots = {
           $('li.list-group-item', context).first().slideDown(500);
         }, 3000);
       }
+
+      // Subscribe form
+      $('form[name*=mc-embedded-subscribe-form]').each(function(){
+        var subscribe = $(this);
+        
+        // Bind submit functionality to button
+        subscribe.bind('submit', function(e){
+          e.preventDefault();
+
+          var email = subscribe.find('input[name=EMAIL]');
+          var name = subscribe.find('input[name=NAME]');
+          var fname = subscribe.find('input[name=FNAME]');
+          var lname = subscribe.find('input[name=LNAME]');
+
+          // Validate required fields
+          if(email.val()==='' || name.val()==='')
+          {
+            alert('You must provide your name and email address.');
+            return false;
+          }
+          else
+          {
+            var full_name = $.trim(name.val()).split(' ');
+            fname.val(full_name[0]);
+            full_name[0] = null;
+            lname.val($.trim(full_name.join(' ')));
+          }
+          
+          // Validate email address
+          var test = /^.+@.+\..{2,}$/.test(email.val());
+          if(!test){
+            alert('Please provide a valid email address.');
+            return false;
+          }
+
+          subscribe.get(0).submit();
+        });
+      });
     }
   },
 

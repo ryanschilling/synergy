@@ -232,19 +232,22 @@ class Subscribe_Form_Widget extends WP_Widget {
     
     echo "<p>". $instance['description'] ."</p>";
     ?>
-    <form class="form-inline" role="form">
+    <form action="http://synergytele.us8.list-manage.com/subscribe/post?u=3178b16a9893aaf6fcc5ea398&amp;id=983a0e561f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="form-inline" role="form" target="_blank" novalidate>
         <div class="form-group">
           <i class="fa fa-4x fa-inbox"></i>
         </div>
+        <div style="position: absolute; left: -5000px;"><input type="text" name="b_3178b16a9893aaf6fcc5ea398_983a0e561f" value=""></div>
+        <input type="hidden" value="" name="FNAME" class="" id="mce-FNAME">
+        <input type="hidden" value="" name="LNAME" class="" id="mce-LNAME">
         <div class="form-group">
           <label class="sr-only" for="subscribeFormName">Your name</label>
-          <input type="name" name="name" class="form-control" style="width: 150px;margin-left:10px;" id="subscribeFormName" placeholder="Your name">
+          <input type="text" name="NAME" class="form-control" style="width: 150px;margin-left:10px;" id="subscribeFormName" placeholder="Your name">
         </div>
         <div class="form-group">
           <label class="sr-only" for="subscribeFormEmail">Email address</label>
-          <input type="email" name="email" class="form-control" style="width: 150px;margin-left:10px;" id="subscribeFormEmail" placeholder="Email address">
+          <input type="email" value="" name="EMAIL" class="form-control required email" id="subscribeFormEmail" style="width: 150px;margin-left:10px;" placeholder="Email address">
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-left: 10px;"><span class="visible-xs">Sign Up <i class="fa fa-fw fa-chevron-right"></i></span><i class="fa fa-fw fa-chevron-right hidden-xs"></i></button>
+        <button type="submit" class="btn btn-primary" name="subscribe" id="mc-embedded-subscribe" style="margin-left: 10px;"><span class="visible-xs">Sign Up <i class="fa fa-fw fa-chevron-right"></i></span><i class="fa fa-fw fa-chevron-right hidden-xs"></i></button>
       </div>
     </form>
     <?php
