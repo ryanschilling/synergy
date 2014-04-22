@@ -9,6 +9,7 @@
       </a>
     </div>
   </div>
+  <?php /*
   <p><?=($item->post_excerpt) ? $item->post_excerpt : substr(strip_tags($item->post_content), 0, 200).'...'?></p>
   <p>
     <a href="<?=get_permalink($item->ID)?>">
@@ -16,4 +17,5 @@
       <i class="fa fa-fw fa-<?=get_field('embed_icon', $item->ID); ?>"></i>
     </a>
   </p>
+  */ ?>
 </div>

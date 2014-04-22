@@ -10,7 +10,7 @@ global $form;
 $organization = 'Synergy Telecom';
 $website = 'SynergyTele.com/support/request-a-quote';
 $subject = 'VoIP System Quote Request';
-$toLiveEmail = 'daniel@bexarcreative.com';
+$toLiveEmail = 'aaron@leadhub.net';
 $toTestEmail = 'daniel@bexarcreative.com';
 $to = isset($_GET['debug']) && $_GET['debug'] == 'testmode' ? $toTestEmail : $toLiveEmail;
 $requireds = array(

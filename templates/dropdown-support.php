@@ -26,7 +26,7 @@
         <ul class="nav">
           <?php
           // Training video links
-          $videos = new WP_Query( array('post_type' => 'training-video', 'posts_per_page' => 3, 'offset' => 1) );
+          $videos = new WP_Query( array('post_type' => 'training-video', 'posts_per_page' => 2, 'offset' => 1) );
           if ( $videos->have_posts() ) {
             while ( $videos->have_posts() ) {
               $videos->the_post();

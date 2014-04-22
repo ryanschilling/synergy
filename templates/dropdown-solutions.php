@@ -16,13 +16,14 @@
               </a>
             </p>
             <ul class="nav">
-              <?php // Case studies 
+              <?php // Industries
               $terms = get_terms('case-study-industry', 'hide_empty=0');
               foreach($terms as $item): ?>
                 <li><a href="<?=get_term_link($item)?>"><?=$item->name?></a></li>
               <?php endforeach; ?>
             </ul>
           </div>
+          <?php /*
           <div class="col-xs-12 col-sm-6 col-md-12">
             <h3><a href="<?=get_post_type_archive_link('case-study')?>">Case Studies</a></h3>
             <?php $item = get_post(274); // Atlee Development ?>
@@ -34,6 +35,7 @@
               </a>
             </p>
           </div>
+          */ ?>
         </div>
       </div>
     </div>
