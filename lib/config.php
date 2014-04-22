@@ -64,6 +64,7 @@ function roots_display_sidebar() {
     array(
       'template-products.php',
       'template-order-online.php',
+      'template-contact-us.php',
     )
   );
 
