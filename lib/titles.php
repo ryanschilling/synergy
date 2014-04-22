@@ -44,8 +44,21 @@ function roots_subtitle(){
   // Archive
   if(is_archive())
   {
-    $subtitle = is_author() ? '<p>'.substr(get_the_author_meta('description'), 0, 200).'</p>' : '<p>'.substr(strip_tags(term_description()), 0, 200).'</p>';
-    return $subtitle;
+    global $post;
+    $post_type = get_post_type_object(get_post_type($post));
+    if(is_author())
+    {
+      $subtitle = substr(get_the_author_meta('description'), 0, 200);
+    }
+    elseif($post_type->description)
+    {
+      $subtitle = $post_type->description;
+    }
+    elseif(term_description())
+    {
+      $subtitle = substr(strip_tags(term_description()), 0, 200);
+    }
+    return '<p>'.$subtitle.'</p>';
   }
 
   // Page/Post

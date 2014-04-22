@@ -3,6 +3,7 @@
 <?php $column = end(get_field('home_column'.$x)); ?>
 <div class="block <?=$column->post_type?>">
   <div class="panel">
+    <!--
     <div class="panel-heading">
       <h3>
       <?php switch($column->post_type){
@@ -31,6 +32,7 @@
       		break;
       } ?></h3>
     </div>
+    -->
     <div class="panel-body">
       <a href="<?=get_permalink($column->ID)?>">
         <?=get_the_post_thumbnail($column->ID, 'panel-image'); ?>

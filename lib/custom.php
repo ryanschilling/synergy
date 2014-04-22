@@ -321,7 +321,7 @@ function add_faq_post_type() {
 				'not_found' => 'No frequently asked questions found.',
 				'not_found_in_trash' => 'No frequently asked questions in Trash.',
 			),
-			'description' => 'Knowledge base of frequently asked questions.',
+			'description' => 'Have a question? Search our knowledge base of frequently asked questions to find a solution that is right for you.',
 			'public' => true,
 			'has_archive' => true,
 			'hierarchical' => true,

@@ -42,7 +42,7 @@
         <div class="row">
            <div class="col-sm-12 col-md-6">
               <h3><a href="<?=get_post_type_archive_link('faq')?>">Knowledge Base</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet nisi sagittis velit euismod, sed vehicula eros commodo.</p>
+              <p><?php $post_type = get_post_type_object('faq'); echo $post_type->description; ?></p>
               <p><a href="<?=get_post_type_archive_link('faq')?>">Get answers to FAQs <i class="fa fa-fw fa-chevron-right"></i></a></p>
             </div>
             <?php get_menu_block(113, 'menu-block-simple'); // Software downloads ?>
