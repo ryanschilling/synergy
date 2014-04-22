@@ -28,17 +28,13 @@ var Roots = {
         return $(this).ekkoLightbox();
       });
 
-      // Increment/decrement product counter on build a system page
-      $('.counter-minus').click(function(){
-        var counter = $(this).parents('.input-group').find('.counter');
-        var count = counter.val() * 1;
-        count = Math.max(0, count-1);
-        counter.val(count);
-      });
-      $('.counter-plus').click(function(){
-        var counter = $(this).parents('.input-group').find('.counter');
-        var count = counter.val() * 1;
-        counter.val(count + 1);
+      // Replace phone numbers on hover
+      $(document).delegate('[href*=4388647]', 'mouseenter', function(event) {
+        var number = $(this).text().replace('GET-VOIP', '438-8647');
+        return $(this).text(number);
+      }).delegate('[href*=4388647]', 'mouseout', function(event) {
+        var number = $(this).text().replace('438-8647', 'GET-VOIP');
+        return $(this).text(number);
       });
 
       // Superdropdown binding
@@ -64,6 +60,21 @@ var Roots = {
         $('#menu-main-menu > .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
         $('#menu-main-menu > .menu-support > .dropdown-menu').html($('#menu-support-dropdown').html());
       }
+
+      // Add hover over on main nav menu
+      $('#menu-main-menu, #menu-utility-menu').find('li.dropdown').hover(function(){
+        if($(window).width() > 767){
+          $(this).addClass('open');
+        }
+      }, function(){
+        if($(window).width() > 767){
+          $(this).removeClass('open');
+        }
+      }).click(function(){
+          if($(window).width() > 767){
+            document.location = document.location.protocol + '//' + document.location.hostname + ($(this).find('a').first().attr('href'));
+          }
+      });
 
       // Open first collapsible paragraph
       $('.faq-collapse').first().find('a[data-toggle="collapse"]').trigger('click');
@@ -94,13 +105,6 @@ var Roots = {
         $('.menu-support .dropdown.menu-training-videos a[href^="'+url+'"]').parents('li').addClass('active');
       }
 
-      // For markets pages make sure that the sidebar menu item is highlighted
-      exp = /^\/solutions\/industries/i;
-      if(exp.test(window.location.pathname))
-      {
-        $('.menu-solutions .menu-voip-industries').addClass('active');
-      }
-
       // For customer review widget make sure only one of the 3 reviews is shown
       var n = Math.round(Math.random()*2);
       if($('.widget_customer_review').length)
@@ -108,21 +112,6 @@ var Roots = {
         $('.widget_customer_review').find('blockquote.review').hide();
         $('.widget_customer_review').find('blockquote.review:eq('+n+')').fadeIn(250);
       }
-
-      // Add hover over on main nav menu
-      $('#menu-main-menu, #menu-utility-menu').find('li.dropdown').hover(function(){
-        if($(window).width() > 767){
-          $(this).addClass('open');
-        }
-      }, function(){
-        if($(window).width() > 767){
-          $(this).removeClass('open');
-        }
-      }).click(function(){
-          if($(window).width() > 767){
-            document.location = document.location.protocol + '//' + document.location.hostname + ($(this).find('a').first().attr('href'));
-          }
-      });
 
       // Animate the customer reviews sidebar widget on product pages
       if($('.widget_product_reviews').length && $('li.list-group-item','.widget_product_reviews').length > 2)
@@ -136,6 +125,34 @@ var Roots = {
           });
           $('li.list-group-item', context).first().slideDown(500);
         }, 3000);
+      }
+    }
+  },
+
+  template_order_online: {
+    init: function() {
+      // Increment/decrement product counter on build a system page
+      $('.counter-minus').click(function(){
+        var counter = $(this).parents('.input-group').find('.counter');
+        var count = counter.val() * 1;
+        count = Math.max(0, count-1);
+        counter.val(count);
+      });
+      $('.counter-plus').click(function(){
+        var counter = $(this).parents('.input-group').find('.counter');
+        var count = counter.val() * 1;
+        counter.val(count + 1);
+      });
+    }
+  },
+
+  tax_case_study_industry: {
+    init: function() {
+      // For markets pages make sure that the sidebar menu item is highlighted
+      exp = /^\/solutions\/industries/i;
+      if(exp.test(window.location.pathname))
+      {
+        $('.menu-solutions .menu-voip-industries').addClass('active');
       }
     }
   }
