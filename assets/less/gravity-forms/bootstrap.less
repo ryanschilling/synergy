@@ -50,7 +50,8 @@
 }
 .ginput_container input.button{
   .btn();
-  .btn-default();
+  .btn-danger();
+  .btn-lg();
   width: auto;
 }
 .ginput_container textarea {
@@ -58,7 +59,8 @@
 }
 .gform_button {
   .btn();
-  .btn-primary();
+  .btn-danger();
+  .btn-lg();
 }
 .gform_wrapper .gfield_error {
   .gfield_label {
@@ -96,8 +98,14 @@
 .gfield_checkbox > li > input{ display: inline-block; width: auto; margin-right: 10px; }
 .gfield_checkbox > li > label{ font-weight: normal; }
 
-#gform_2{
+#gform_1,
+#gform_2,
+#gform_4{
   .well;
   background-color: darken(@gray-lighter, 10%);
   border-color: darken(@gray-lighter, 20%);
+
+  .gform_title{
+    margin-top: 0;
+  }
 }
