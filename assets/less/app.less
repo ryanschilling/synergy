@@ -758,6 +758,7 @@ body {
       float: right;
       margin-left: 20px;
       margin-bottom: 20px;
+      min-width: 345px;
 
       .panel-heading{ .border-top-radius(0); }
       .panel-heading h3{ .panel-title; text-transform: uppercase; font-weight: 400; font-size: 14px; }
@@ -1557,6 +1558,26 @@ body.template-order-online{
          margin-bottom: 10px;
       }
    }
+
+   .group{
+      .panel;
+      .panel-primary;
+      border: 0;
+      background: none;
+      box-shadow: none;
+
+      .group-heading{
+         .panel-heading;
+         border-radius: @border-radius-base;
+         margin-bottom: 20px;
+
+         .group-title{
+            .panel-title;
+            font-size: 18px;
+            padding: 10px 20px;
+         }
+      }
+   }
 }
 
 /* ==========================================================================
@@ -2212,7 +2233,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    }
 
    // Featured image on pages and posts
-   .content .featured-image{ width: 100%; float: none; margin: 0; margin-bottom: 20px; }
+   .content .featured-image{ width: 100%; float: none; margin: 0; margin-bottom: 20px; min-width: 0; }
    body.archive .hentry.case-study .featured-image .panel-body a>img{ height: auto; width: 100%; }
 
    // Android/Apple buttons

@@ -247,8 +247,7 @@ endwhile;
 				</div>
 			<?php endforeach; ?>
 			</div>
-		</div>
-		<div class="group col-xs-12 col-sm-12 col-md-6">
+			<br>
 			<div class="group-heading">
 				<h2 class="group-title">Choose Your Software Addons</h2>
 			</div>
@@ -273,10 +272,7 @@ endwhile;
 			<?php endforeach; ?>
 			</div>
 		</div>
-	</div>
-
-	<div class="row">
-		<div class="group col-xs-12 col-sm-12 col-md-8">
+		<div class="group col-xs-12 col-sm-12 col-md-6">
 			<div class="group-heading">
 				<h2 class="group-title">Tell Us About Your Company</h2>
 			</div>
@@ -329,11 +325,12 @@ endwhile;
 						</div>
 					</div>
 				</div>
+				<p class="text-center">
+					<input type="submit" class="btn btn-lg btn-danger" value="Request Quote">
+				</p>
 			</div>
 		</div>
 	</div>
-
-	<input type="submit" class="btn btn-lg btn-primary" value="Request Quote">
 </form>
 
 
