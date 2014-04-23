@@ -3,7 +3,6 @@
 Template Name: Order Online Page
 */
 
-$_GET['debug'] = 'testmode';
 error_reporting(E_ALL);
 ini_set('display_errors', isset($_GET['debug']) && $_GET['debug'] == 'testmode');
 
