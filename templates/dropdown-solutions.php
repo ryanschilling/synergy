@@ -42,10 +42,10 @@
   </div>
   <div class="menu-banner">
     <div class="menu-banner-text">
-      <h4>Synergy is solving business class communications. Are you using VoIP yet?</h4>
+      <h4><?php the_field('dropdown_cta_text', 2); ?></h4>
     </div>
     <div class="menu-banner-button">
-      <a href="<?=get_permalink(121)?>">Request a VoIP Demo</a>
+      <a href="<?php the_field('dropdown_cta_url', 2); ?>"><?php the_field('dropdown_cta_button', 2); ?></a>
     </div>
   </div>
 </div>

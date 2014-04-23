@@ -69,10 +69,10 @@
   </div>
   <div class="menu-banner">
     <div class="menu-banner-text">
-      <h4>Having trouble with a VOIP system? Get training and technical support by Synergy.</h4>
+      <h4><?php the_field('dropdown_cta_text', 105); ?></h4>
     </div>
     <div class="menu-banner-button">
-      <a href="<?=get_permalink(121)?>">Request a Callback</a>
+      <a href="<?php the_field('dropdown_cta_url', 105); ?>"><?php the_field('dropdown_cta_button', 105); ?></a>
     </div>
   </div>
 </div>
