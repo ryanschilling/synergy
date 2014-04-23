@@ -57,7 +57,9 @@
               <small>
                 <a href="<?=get_permalink(121)?>"><?=get_the_title(121); // Contact Sales Department ?></a>
                 &nbsp;&nbsp; | &nbsp;&nbsp; <a href="<?=get_permalink(119)?>"><?=get_the_title(119); // Request a Quote ?></a>
+                <?php /*
                 &nbsp;&nbsp; | &nbsp;&nbsp; <a href="<?=get_permalink(123)?>"><?=get_the_title(123); // Submit a Review ?></a>
+                */ ?>
               </small>
             </h3>
           </div>
@@ -70,7 +72,7 @@
       <h4>Having trouble with a VOIP system? Get training and technical support by Synergy.</h4>
     </div>
     <div class="menu-banner-button">
-      <a href="#">Request a Callback</a>
+      <a href="<?=get_permalink(121)?>">Request a Callback</a>
     </div>
   </div>
 </div>

@@ -45,7 +45,7 @@
       <h4>Synergy is solving business class communications. Are you using VoIP yet?</h4>
     </div>
     <div class="menu-banner-button">
-      <a href="#">Request a VoIP Demo</a>
+      <a href="<?=get_permalink(121)?>">Request a VoIP Demo</a>
     </div>
   </div>
 </div>

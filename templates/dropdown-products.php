@@ -20,7 +20,7 @@
       <h4>Revolutionize your business communications with Synergy's VoIP products.</h4>
     </div>
     <div class="menu-banner-button">
-      <a href="#">Build Your System</a>
+      <a href="<?=get_permalink(119)?>">Build Your System</a>
     </div>
   </div>
 </div>
