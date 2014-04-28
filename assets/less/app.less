@@ -1297,6 +1297,7 @@ body.single-product{
                border-width: 1px;
                margin: 0;
                margin-bottom: 20px;
+               min-width: 0;
 
                img{
                   border-radius: @border-radius-base;
@@ -1527,7 +1528,11 @@ body.search-results{
    ========================================================================== */
 
 body.archive .hentry.case-study{
-   .featured-image .panel-body a > img{ width: 254px; height: auto; }
+   .featured-image{
+      min-width: 254px;
+
+      .panel-body a > img{ width: 254px; height: auto; }
+   }
 }
 
 /* ==========================================================================
