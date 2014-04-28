@@ -198,10 +198,11 @@ var Roots = {
   template_contact_us: {
     init: function(){
       function init_map(){
-        var myOptions = {zoom:14,center:new google.maps.LatLng(29.53117129999999,-98.49531460000003),mapTypeId: google.maps.MapTypeId.ROADMAP};
+        var address = $('.address-for-map');
+        var myOptions = {zoom:address.data('zoom'),center:new google.maps.LatLng(address.data('lat'), address.data('lng')),mapTypeId: google.maps.MapTypeId.ROADMAP};
         map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-        marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(29.53117129999999, -98.49531460000003)});
-        infowindow = new google.maps.InfoWindow({content:"<strong>Synergy Telecom, Inc.</strong><br/>10010 San Pedro Avenue<br/>San Antonio, TX 78216<br>Hours: 9-5 Mon-Fri" });
+        marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(address.data('lat'), address.data('lng'))});
+        infowindow = new google.maps.InfoWindow({content: address.html() });
         google.maps.event.addListener(marker, "click", function(){
           infowindow.open(map,marker);
         });

@@ -22,7 +22,7 @@ Template Name: Contact Us Page
 		</div>
 		<hr>
 		<div class="row">
-			<address class="col-sm-6">
+			<address class="address-for-map col-sm-6" data-zoom="14" data-lat="29.53117129999999", data-lng="-98.49531460000003">
 				<strong>Synergy Telecom, Inc.</strong><br/>10010 San Pedro Avenue #350<br/>San Antonio, TX 78216<br>Hours: 8-5 Mon-Fri
 			</address>
 			<address class="col-sm-6"><br>
