@@ -10,7 +10,7 @@ global $form;
 $organization = 'Synergy Telecom';
 $website = 'SynergyTele.com/support/request-a-quote';
 $subject = 'VoIP System Quote Request';
-$toLiveEmail = 'aaron@leadhub.net';
+$toLiveEmail = 'charlie@synergytele.com';
 $toTestEmail = 'daniel@bexarcreative.com';
 $to = isset($_GET['debug']) && $_GET['debug'] == 'testmode' ? $toTestEmail : $toLiveEmail;
 $requireds = array(
@@ -179,44 +179,80 @@ endwhile;
 
 	<div class="group">
 		<div class="group-heading">
-			<h2 class="group-title">Choose Your VoIP Phone Hardware</h2>
+			<h2 class="group-title">Choose Your VoIP Phone(s)</h2>
 		</div>
 		<div class="group-body">
 			<div class="row">
 				<?php showProducts(array(
-					'orderby' => 'menu_order',
+					'orderby' => 'post_date',
 					'post_type' => 'product',
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'product-type',
-							'terms' => array(8, 76, 70)
+							'terms' => array(8)
 						)
 					)
 				)); ?>
 			</div>
 		</div>
 	</div>
-
 	<div class="group">
 		<div class="group-heading">
-			<h2 class="group-title">Choose Your VoIP Video Conferencing Hardware</h2>
+			<h2 class="group-title">Choose your Conference Phone(s)</h2>
 		</div>
 		<div class="group-body">
 			<div class="row">
 				<?php showProducts(array(
-					'orderby' => 'menu_order',
+					'orderby' => 'post_date',
 					'post_type' => 'product',
 					'tax_query' => array(
 						array(
 							'taxonomy' => 'product-type',
-							'terms' => array(75, 71)
+							'terms' => array(76)
+						)
+					)
+				)); ?>
+			</div>
+		</div>
+	</div>	
+	<div class="group">
+		<div class="group-heading">
+			<h2 class="group-title">Choose your Video Conferencing Hardware</h2>
+		</div>
+		<div class="group-body">
+			<div class="row">
+				<?php showProducts(array(
+					'orderby' => 'post_date',
+					'post_type' => 'product',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'product-type',
+							'terms' => array(75)
 						)
 					)
 				)); ?>
 			</div>
 		</div>
 	</div>
-
+	<div class="group">
+		<div class="group-heading">
+			<h2 class="group-title">Choose your Accessories</h2>
+		</div>
+		<div class="group-body">
+			<div class="row">
+				<?php showProducts(array(
+					'orderby' => 'post_date',
+					'post_type' => 'product',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'product-type',
+							'terms' => array(70, 71)
+						)
+					)
+				)); ?>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="group col-xs-12 col-sm-12 col-md-6">
 			<div class="group-heading">
@@ -259,6 +295,7 @@ endwhile;
 					'I want to setup a call-center',
 					'I want to have an auto-attendant',
 					'I want to do video conferencing',
+					'I want to have an E-Fax',
 				);
 				foreach($addons as $addon): ?>
 				<div class="form-group">

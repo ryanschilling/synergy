@@ -23,11 +23,12 @@ Template Name: Contact Us Page
 		<hr>
 		<div class="row">
 			<address class="col-sm-6">
-				<strong>Synergy Telecom, Inc.</strong><br/>10010 San Pedro Avenue<br/>San Antonio, TX 78216<br>Hours: 9-5 Mon-Fri
+				<strong>Synergy Telecom, Inc.</strong><br/>10010 San Pedro Avenue #350<br/>San Antonio, TX 78216<br>Hours: 8-5 Mon-Fri
 			</address>
 			<address class="col-sm-6"><br>
 				<abbr title="Phone">Call</abbr> <a href="tel:+12104388647">(210) GET-VOIP</a><br>
-				<abbr title="Email">Email</abbr> <a href="mailto:sales@synergytele.com">sales@synergytele.com</a>
+				<abbr title="Email">Email</abbr> <a href="mailto:sales@synergytele.com">sales@synergytele.com</a><br>
+				<abbr title="Email">Email</abbr> <a href="mailto:support@synergytele.com">support@synergytele.com</a>
 			</address>
 		</div>
 	</div>
