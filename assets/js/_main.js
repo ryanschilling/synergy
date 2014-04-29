@@ -235,3 +235,38 @@ var UTIL = {
 $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+
+Modernizr.addTest('backgroundclip',function() {
+
+  var div = document.createElement('div');
+
+  if ('backgroundClip' in div.style)
+  {
+     return true;
+  }
+
+  'Webkit Moz O ms Khtml'.replace(/([A-Za-z]*)/g,function(val) {
+    if (val+'BackgroundClip' in div.style)
+    {
+      return true;
+    }
+  });
+
+});
+
+Modernizr.addTest('backgroundcliptext',function(){
+    var div = document.createElement('div');
+    div.style.webkitBackgroundClip = "text";
+    var text = div.style.cssText.indexOf('text');
+    if (text > 0)
+    {
+      return true;
+    }
+    'Webkit Moz O ms Khtml'.replace(/([A-Za-z]*)/g,function(val){
+        if (val+'BackgroundClip' in div.style)
+        {
+          return true;
+        }
+    });
+});

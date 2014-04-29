@@ -2,8 +2,9 @@
  * Roots 6.5.2
  */
 
-@import "font-awesome/font-awesome.less";
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+//@import "font-awesome/font-awesome.less"; 
 @import "bootstrap/bootstrap.less";
 @import "lightbox/ekko-lightbox-3.1.1.less";
 @import "lightbox/themes/dark.less";
@@ -19,6 +20,20 @@ body {
    color: #5e5e5e;
 }
 
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-fw {
+  width: 1.2857142857142858em;
+  text-align: center;
+}
 
 
 /* ==========================================================================
@@ -64,21 +79,33 @@ body {
       }
 
       .social{
-         height: 36px;
+         height: 30px;
          overflow: hidden;
+         position: relative;
+         top: 20px;
 
-         a{
-            visibility: hidden;
+         > ul{
+            height: 30px;
+         }
+
+         > ul > li > a,
+         > ul > li > a:hover{
             .fa;
             .fa-fw;
-            .fa-2x;
+            font-size: 2em;
+            padding:0;
+            margin:0;
+            line-height: 0px;
+            background: none;
 
-            &:before{
-               .fa;
-               .fa-fw;
-               visibility: visible;
-               margin-left: -10px;
+            span{
+               visibility: hidden;
             }
+         }
+
+         > ul > li > a:before{
+            .fa;
+            .fa-fw;
          }
 
          .menu-facebook a:before{ content: "\f082"; color: rgb(59, 89, 152); }
@@ -133,13 +160,13 @@ body {
                      color: @link-hover-color;
                      background: #fff;
                   }
+               }
 
-                  &:before{
-                     .fa;
-                     .fa-fw;
-                     margin-right: 6px;
-                     font-size: 18px;
-                  }
+               > li a:before{
+                  .fa;
+                  .fa-fw;
+                  margin-right: 6px;
+                  font-size: 18px;
                }
 
                > li.active > a{
@@ -296,20 +323,23 @@ body {
                }
             }
 
-            > li.menu-search > a{
-               visibility: hidden;
+            > li.menu-search > a,
+            > li.menu-search > a:hover{
                .fa;
                .fa-fw;
                font-size: 28px;
                line-height: 29px;
+               background: none;
 
-               &:before{
-                  .fa;
-                  .fa-fw;
-                  margin-left: -15px;
-                  content: "\f002";
-                  visibility: visible;
+               span{
+                  visibility: hidden;
                }
+            }
+            > li.menu-search > a:before{
+               .fa;
+               .fa-fw;
+               margin-left: -15px;
+               content: "\f002";
             }
          }
       }
@@ -603,19 +633,21 @@ body {
       #menu-social-icons-2{ min-width: 190px; }
 
       a{
-         visibility: hidden;
          .fa;
          .fa-fw;
-         .fa-2x;
+         font-size: 2em;
          font-size: 28px;
          margin-top: -12px;
 
-         &:before{
-            .fa;
-            .fa-fw;
-            visibility: visible;
-            margin-left: -10px;
+         span{
+            visibility: hidden;
          }
+      }
+
+      a:before{
+         .fa;
+         .fa-fw;
+         margin-left: -10px;
       }
 
       .menu-facebook a:before{ content: "\f082"; color: rgb(59, 89, 152); }
@@ -975,20 +1007,21 @@ body.single-product{
 
             > .caret{ display: none; }
 
-            &:before{
-               content: '\f13a';
-               font-family: 'FontAwesome';
-               position: absolute;
-               left: 0px;
-               font-size: 28px;
-               top: 0px;
-               background-color: darken(@gray-lighter, 10%);
-               color: transparent;
-               text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
-                 -webkit-background-clip: text;
-                    -moz-background-clip: text;
-                         background-clip: text;
-            }
+         }
+
+         > a:before{
+            content: '\f13a';
+            font-family: 'FontAwesome';
+            position: absolute;
+            left: 0px;
+            font-size: 28px;
+            top: 0px;
+            background-color: darken(@gray-lighter, 10%);
+            color: transparent;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+              -webkit-background-clip: text;
+                 -moz-background-clip: text;
+                      background-clip: text;
          }
 
          // Page
@@ -1041,12 +1074,9 @@ body.single-product{
             }
 
             > li > a:hover,
-            > li > ul.dropdown-menu > li > a:hover{
+            > li > ul.dropdown-menu > li > a:hover,
+            > li > ul.dropdown-menu > li > a:hover:before{
                .transition-duration(0.5s);
-
-               &:before{
-                  .transition-duration(0.5s);
-               }
             }
 
             > li.active.dropdown > a:before,
@@ -1094,20 +1124,24 @@ body.single-product{
 
          > .caret{ display: none; }
 
-         &:before{
-            content: '\f13a';
-            font-family: 'FontAwesome';
-            position: absolute;
-            left: 0px;
-            font-size: 28px;
-            top: 0px;
-            background-color: darken(@gray-lighter, 10%);
-            color: transparent;
-            text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
-              -webkit-background-clip: text;
-                 -moz-background-clip: text;
-                      background-clip: text;
-         }
+      }
+
+      > h3:before{
+         content: '\f13a';
+         font-family: 'FontAwesome';
+         position: absolute;
+         left: 0px;
+         font-size: 28px;
+         top: 0px;
+         background-color: darken(@gray-lighter, 10%);
+         color: transparent;
+         -webkit-text-fill-color: transparent;
+            -moz-text-fill-color: transparent;
+                 text-fill-color: transparent;
+         text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+           -webkit-background-clip: text;
+              -moz-background-clip: text;
+                   background-clip: text;
       }
 
       // Make look like a menu
@@ -1305,6 +1339,17 @@ body.single-product{
             }
          }
       }
+
+      &.widget_text > .textwidget > a > img{
+         max-width: 100%;
+         width: 100%;
+      }
+
+      &.widget_FacebookLikeBox,
+      &.google_plus_follow_box{
+         width: 100%;
+         overflow-x: hidden;
+      }
    }
 
    nav.sidebar-menu + section.widget{ margin-top: 30px; }
@@ -1332,20 +1377,22 @@ body.template-products{
          font-size: 18px;
          display: inline-block;
       }
+   }
 
-      &:before{
-         display: block;
-         width: 10px;
-         position: relative;
-         left: -30px;
-         float: left;
-         font-family: 'FontAwesome';
-         font-size: 32px;
-      }
+   .btn-apple:before,
+   .btn-android:before{
+      display: block;
+      width: 10px;
+      position: relative;
+      left: -30px;
+      float: left;
+      font-family: 'FontAwesome';
+      font-size: 32px;
+   }
 
-      &:hover{
-         background: @gray;
-      }
+   .btn-apple:hover,
+   .btn-android:hover{
+      background: @gray;
    }
 
    .btn-android:before{
@@ -1445,18 +1492,19 @@ body.template-products{
       display: inline;
       margin-right: 10px;
       font-size: 13px;
+   }
 
-      &:before{
-         content: '\f138';
-         font-family: 'FontAwesome';
-         background-color: darken(@gray-lighter, 10%);
-         color: transparent;
-         text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
-           -webkit-background-clip: text;
-              -moz-background-clip: text;
-                   background-clip: text;
-         margin-right: 5px;
-      }
+   .byline:before,
+   time:before{
+      content: '\f138';
+      font-family: 'FontAwesome';
+      background-color: darken(@gray-lighter, 10%);
+      color: transparent;
+      text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+        -webkit-background-clip: text;
+           -moz-background-clip: text;
+                background-clip: text;
+      margin-right: 5px;
    }
 
    time:before{ content: '\f073'; }
@@ -1968,17 +2016,19 @@ body.single-training-video .type-training-video{
          #menu-social-icons-1{ min-width: 190px; }
 
          a{
-            visibility: hidden;
             .fa;
             .fa-fw;
-            .fa-2x;
+            font-size: 2em;
             font-size: 28px;
             margin-top: -12px;
+
+            span{
+               visibility: hidden;
+            }
 
             &:before{
                .fa;
                .fa-fw;
-               visibility: visible;
                margin-left: -10px;
             }
          }
@@ -2450,4 +2500,23 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
    // Order online product clear
    body.template-order-online .product:nth-child(4n+1){ clear: left; }
+}
+
+
+/* ==========================================================================
+   Fallbacks
+   ========================================================================== */
+
+.no-backgroundcliptext{
+   .sidebar .sidebar-menu > ul li a:before,
+   .sidebar .widget h3:before{
+      color: @gray-light !important;
+      background: none !important;
+      -webkit-background-clip: none !important;
+         -moz-background-clip: none !important;
+              background-clip: none !important;
+      -webkit-text-fill-color: initial !important;
+         -moz-text-fill-color: initial !important;
+              text-fill-color: initial !important;
+   }
 }
