@@ -246,7 +246,7 @@ body {
             > li > a{
                color: #b4b4b4;
                font-size: 20px;
-               padding: 22px 26px;
+               padding: 22px 27px;
                line-height: 30px;
                font-weight: 600;
                text-shadow: -1px -1px 0 #3b3b3b;
@@ -330,6 +330,7 @@ body {
                font-size: 28px;
                line-height: 29px;
                background: none;
+               padding: 22px 20px;
 
                span{
                   visibility: hidden;
@@ -338,7 +339,7 @@ body {
             > li.menu-search > a:before{
                .fa;
                .fa-fw;
-               margin-left: -15px;
+               width: auto;
                content: "\f002";
             }
          }
@@ -461,6 +462,72 @@ body {
    #menu-main-menu > .menu-products > ul.dropdown-menu,
    #menu-main-menu > .menu-support > ul.dropdown-menu{
       padding: 0;
+   }
+
+   #menu-main-menu{
+      .menu-search{
+         form{
+            display: none;
+            float: left;
+
+            input{
+               width: 0;
+               font-size: 20px;
+               height: 42px;
+               position: relative;
+               top: -8px;
+               background: @gray;
+               border: 1px solid @gray-dark;
+               border-radius: 26px;
+               padding-left: 20px;
+               .box-shadow(inset 0px 2px 4px rgba(0, 0, 0, 0.4));
+               color: @gray-lighter;
+               text-shadow: -1px -1px 0px rgba(0,0,0,0.4);
+               font-weight: 200;
+
+               &::-webkit-input-placeholder,
+               &:-moz-placeholder,
+               &::-moz-placeholder,
+               &:-ms-input-placeholder,
+               &:input-placeholder {  
+                  color: lighten(@gray,10%);
+               }
+            }
+         }
+         
+         a{
+            width: auto;
+         }
+
+         a:before{
+            float: left;
+         }
+      }
+
+      &.with-search{
+
+         > li > a{
+            padding: 22px 14px;
+            font-size: 20px;
+         }
+
+         .menu-search{
+            
+            a:before{
+               display: none;
+            }
+
+            form{
+               display: block;
+
+               input{
+                  width: 165px;
+                  .transition-property(width);
+                  .transition-duration(0.5s);
+               }
+            }
+         }
+      }
    }
 
 
@@ -2440,6 +2507,27 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
    // Menu
    .header .menu nav > ul > li > a{ font-size: 22px; padding: 22px 41px; }
+   .header .menu nav > ul > li.menu-search > a,
+   .header .menu nav > ul > li.menu-search > a:hover{ padding: 22px 41px; }
+   .header .menu #menu-main-menu{
+
+      &.with-search{
+
+         > li > a{
+            padding: 22px 29px;
+         }
+
+         .menu-search{
+
+            form{
+
+               input{
+                  width: 200px;
+               }
+            }
+         }
+      }
+   }
 
    body.archive.category,
    body.single-post,
@@ -2468,6 +2556,17 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    
    // Menu
    .header .menu nav > ul > li > a{ padding: 22px 58px; }
+   .header .menu nav > ul > li.menu-search > a,
+   .header .menu nav > ul > li.menu-search > a:hover{ padding: 22px 58px; }
+   .header .menu #menu-main-menu{
+
+      &.with-search{
+
+         > li > a{
+            padding: 22px 46px;
+         }
+      }
+   }
 
    // Training Video
    body.single-training-video .type-training-video .panel .panel-body iframe.video{ min-height: 450px; }

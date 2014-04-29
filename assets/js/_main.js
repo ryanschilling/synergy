@@ -38,14 +38,15 @@ var Roots = {
       });
 
       // Superdropdown binding
+      var main_menu = $('#menu-main-menu');
       if($(window).width() > 767)
       {
         $(window).resize(function(){
-          var container_width = $('#menu-main-menu').width();
-          var container_offset = $('#menu-main-menu').offset().left;
-          $('#menu-main-menu > .menu-solutions > .dropdown-menu,'+
-              '#menu-main-menu > .menu-products > .dropdown-menu,'+
-              '#menu-main-menu > .menu-support > .dropdown-menu'
+          var container_width = main_menu.width();
+          var container_offset = main_menu.offset().left;
+          main_menu.find('> .menu-solutions > .dropdown-menu,'+
+              '> .menu-products > .dropdown-menu,'+
+              '> .menu-support > .dropdown-menu'
           ).each(function(){
             var li_offset = $(this).parents('li.dropdown').offset().left;
             $(this).css({
@@ -56,9 +57,9 @@ var Roots = {
         }).trigger('resize');
       
         // Enable dropdown menus
-        $('#menu-main-menu > .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
-        $('#menu-main-menu > .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
-        $('#menu-main-menu > .menu-support > .dropdown-menu').html($('#menu-support-dropdown').html());
+        main_menu.find('> .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
+        main_menu.find('> .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
+        main_menu.find('> .menu-support > .dropdown-menu').html($('#menu-support-dropdown').html());
       }
 
       // Add hover over on main nav menu
@@ -74,6 +75,23 @@ var Roots = {
           if($(window).width() > 767){
             document.location = document.location.protocol + '//' + document.location.hostname + ($(this).find('a').first().attr('href'));
           }
+      });
+
+      // Bind opening of search input
+      var search_btn = $('.menu-search a');
+      var search_form = $('<form action="/search/+" method="GET"><input type="text" name="keyword" value="" class="form-control keyword" placeholder="Search"></form>');
+      search_form.submit(function(e){
+        e.preventDefault();
+        var form_action = search_form.attr('action');
+        var form_input = search_form.find('input').val();
+        document.location = form_action + form_input;
+        return false;
+      });
+      search_btn.html('').append(search_form);
+      search_btn.click(function(e){
+        e.preventDefault();
+        main_menu.addClass('with-search');
+        search_form.find('input').focus();
       });
 
       // Open first collapsible paragraph
