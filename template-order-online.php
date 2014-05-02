@@ -11,7 +11,7 @@ $organization = 'Synergy Telecom';
 $website = 'SynergyTele.com/support/request-a-quote';
 $subject = 'VoIP System Quote Request';
 $toLiveEmail = 'charlie@synergytele.com';
-$toTestEmail = 'daniel@bexarcreative.com';
+$toTestEmail = 'webleads@leadhub.net';
 $to = isset($_GET['debug']) && $_GET['debug'] == 'testmode' ? $toTestEmail : $toLiveEmail;
 $requireds = array(
 	'Business_Name', 'Email_Address', 'Customer_Name', 'Phone_Number',
