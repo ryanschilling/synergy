@@ -4,7 +4,7 @@
 
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
-//@import "font-awesome/font-awesome.less"; 
+//@import "font-awesome/font-awesome.less";
 @import "bootstrap/bootstrap.less";
 @import "lightbox/ekko-lightbox-3.1.1.less";
 @import "lightbox/themes/dark.less";
@@ -70,7 +70,7 @@ body {
          position: relative;
          top: 10px;
 
-         > ul{ 
+         > ul{
             .nav;
             .nav-pills;
 
@@ -117,7 +117,7 @@ body {
 
       .utility{
          .menu-contact-us{
-            
+
             > a{
                border-color: transparent;
                border: 1px solid transparent;
@@ -236,7 +236,7 @@ body {
             border-right: 3px groove #888;
             border-right: 3px groove rgba(122, 122, 122, 0.44);
             width: 100%;
-            
+
             > li{
                border-left: 3px groove #888;
                border-left: 3px groove rgba(122, 122, 122, 0.44);
@@ -375,8 +375,8 @@ body {
                height: 210px;
 
                .fluid-width-video-wrapper{ height: 100%; }
-            
-               + .overlay{ display: none; } 
+
+               + .overlay{ display: none; }
             }
          }
 
@@ -489,12 +489,12 @@ body {
                &:-moz-placeholder,
                &::-moz-placeholder,
                &:-ms-input-placeholder,
-               &:input-placeholder {  
+               &:input-placeholder {
                   color: lighten(@gray,10%);
                }
             }
          }
-         
+
          a{
             width: auto;
          }
@@ -512,7 +512,7 @@ body {
          }
 
          .menu-search{
-            
+
             a:before{
                display: none;
             }
@@ -541,7 +541,7 @@ body {
       max-height: 367px;
       overflow: hidden;
       position: relative;
-      
+
       &#carousel-home,
       &#carousel-home .item,
       &#carousel-home .jumbotron{ height: 373px; }
@@ -565,7 +565,7 @@ body {
          &.right{ text-align: right; }
          &.right > span { right: 30px; }
       }
-      
+
       .item{
          background: url('../img/banner-bg.jpg') no-repeat top center transparent;
       }
@@ -643,7 +643,7 @@ body {
          .description{
             .make-xs-column(12);
             .make-sm-column(6);
-            .make-sm-column-push(6);  
+            .make-sm-column-push(6);
          }
 
          .btn-lg{ font-weight: 600; font-size: 22px; }
@@ -954,7 +954,7 @@ body.single-product{
    ========================================================================== */
 
 .hentry.review{
-   
+
    blockquote{
       .well;
       border-radius: @border-radius-base;
@@ -1000,7 +1000,7 @@ body.single-product{
 
    blockquote{
       border-color: @brand-danger;
-      
+
       q{
          .lead;
       }
@@ -1063,7 +1063,7 @@ body.single-product{
 
       // Section
       > ul > li{
-         
+
          > a{
             font-size: 24px;
             font-weight: 400;
@@ -1256,7 +1256,7 @@ body.single-product{
                   border: none;
                   padding: 8px;
                   margin-bottom: 0;
-                  
+
                   q{
                      font-size: 15px;
                      line-height: 19px;
@@ -1362,7 +1362,7 @@ body.single-product{
                display: none;
             }
          }
-         
+
          .btn{
             margin-left: 0 !important;
 
@@ -1516,7 +1516,7 @@ body.template-products{
             max-width: 556px;
             height: auto;
             margin-top: -240px;
-         }   
+         }
       }
    }
 
@@ -1715,7 +1715,7 @@ body.single .related-faqs article.type-faq{
    header{
       .panel-heading;
       padding: 10px 20px;
-      
+
       .entry-title{
          .panel-title;
          font-weight: 600;
@@ -1875,7 +1875,7 @@ article.type-faq{
 body.single article.type-faq footer{
    .well-sm;
 
-   p{ 
+   p{
       margin-bottom: 0;
    }
 }
@@ -2235,7 +2235,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    ========================================================================== */
 
 @media (max-width: @screen-xs-max) {
-   
+
    // Header
    .header .navbar-header{ width: 100%; margin: 0; background: transparent; height: auto; }
    .header .container{ padding: 0; }
@@ -2259,7 +2259,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       > .container > .navbar-collapse{ margin-right: 0; margin-left: 0; }
       nav > ul{ margin: 0; border-right: none; }
       nav > ul > li{ border-left: 0; height: auto; }
-      nav > ul > li > a{ padding: 12px 20px; border: 0 !important; top: 0 !important; }
+      nav > ul > li > a{ display:block; padding: 12px 20px; border: 0 !important; top: 0 !important; }
       nav > ul > li.open{ padding: 12px 17px; }
       nav > ul > li.open > a,
       nav > ul > li.open > a:hover,
@@ -2270,6 +2270,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       nav > ul > li.open.active > a:focus,
       nav > ul > li.open.active > a:active{ background: none; color: @link-hover-color; padding: 0px 3px; }
       nav > ul > li.open > ul.dropdown-menu{ .border-top-radius(@border-radius-base); margin-top: 0; }
+      nav > ul > li.open > .dropdown-backdrop{ display: none; }
       nav > ul > li + li{ border-left: 0; border-top: 3px groove #888; border-top: 3px groove rgba(122, 122, 122, 0.44); }
       nav > ul > li.menu-search{ display: none; }
    }
@@ -2337,11 +2338,11 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
       > li{ height: 30px; float: none; display:inline-block; }
    }
    .footer .quick-links .social{ margin-bottom: 20px; }
-   
+
    // Footer legal
    .footer .legal{ margin-top: 0; }
    .footer .legal .copyright p{ display: block; float: none; text-align: center; color: #5E5E5E; text-shadow: none; }
-   .footer .legal .copyright .links{ display: block; float: none; margin-top: 35px; 
+   .footer .legal .copyright .links{ display: block; float: none; margin-top: 35px;
       > ul{ margin-left: 0; }
       > ul > li{ width: 49%; }
       > ul > li > a{ display: block; padding: 0; text-align: center; }
@@ -2384,7 +2385,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header{ background-size: 576px 133px; }
    .header .navbar-header{ background-size: 720px 133px; }
    .header .navbar-header .utility > ul > li > a{ padding: 10px 10px; }
-   
+
    // Banner
    .header .banner#carousel-home .container{ width: 100%; padding: 0; }
    .header .banner#carousel-home .jumbotron{ padding-left: 150px; padding-right: 150px; }
@@ -2393,7 +2394,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    .header .banner.video .jumbotron .featured_video_plus.responsive{ min-height: 225px; }
    .header .banner.video .jumbotron .featured_video_plus.responsive .fluid-width-video-wrapper{ padding-top: 0 !important; }
    .header .banner.video .jumbotron .featured_video_plus.responsive iframe{ .box-sizing(border-box); min-height: 220px; }
-   
+
    // Breadcrumbs
    .breadcrumbs{
       ul.landing > li > a{ float: none; display: none; }
@@ -2476,7 +2477,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Media Queries: Laptop
    ========================================================================== */
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-   
+
    // Training videos
    footer .next-video,
    footer .prev-video{
@@ -2553,7 +2554,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Media Queries: Desktop
    ========================================================================== */
 @media (min-width: @screen-lg-min) {
-   
+
    // Menu
    .header .menu nav > ul > li > a{ padding: 22px 58px; }
    .header .menu nav > ul > li.menu-search > a,

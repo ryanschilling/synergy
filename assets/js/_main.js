@@ -6,7 +6,7 @@
  * replace the dash with an underscore when adding it to the object below.
  *
  * .noConflict()
- * The routing is enclosed within an anonymous function so that you can 
+ * The routing is enclosed within an anonymous function so that you can
  * always reference jQuery with $, even when in .noConflict() mode.
  *
  * Google CDN, Latest jQuery
@@ -16,7 +16,7 @@
 
 (function($) {
 
-// Use this variable to set up the common and page specific functions. If you 
+// Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
 var Roots = {
   // All pages
@@ -55,7 +55,7 @@ var Roots = {
             });
           });
         }).trigger('resize');
-      
+
         // Enable dropdown menus
         main_menu.find('> .menu-solutions > .dropdown-menu').html($('#menu-solutions-dropdown').html());
         main_menu.find('> .menu-products > .dropdown-menu').html($('#menu-products-dropdown').html());
@@ -73,7 +73,8 @@ var Roots = {
         }
       }).click(function(){
           if($(window).width() > 767){
-            document.location = document.location.protocol + '//' + document.location.hostname + ($(this).find('a').first().attr('href'));
+            var url = document.location.protocol + '//' + document.location.hostname + ($(this).find('a').first().attr('href'));
+            document.location = url;
           }
       });
 
@@ -148,7 +149,7 @@ var Roots = {
       // Subscribe form
       $('form[name*=mc-embedded-subscribe-form]').each(function(){
         var subscribe = $(this);
-        
+
         // Bind submit functionality to button
         subscribe.bind('submit', function(e){
           e.preventDefault();
@@ -171,7 +172,7 @@ var Roots = {
             full_name[0] = null;
             lname.val($.trim(full_name.join(' ')));
           }
-          
+
           // Validate email address
           var test = /^.+@.+\..{2,}$/.test(email.val());
           if(!test){
