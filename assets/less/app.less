@@ -3,8 +3,7 @@
  */
 
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700");
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
-//@import "font-awesome/font-awesome.less";
+@import "font-awesome/font-awesome.less";
 @import "bootstrap/bootstrap.less";
 @import "lightbox/ekko-lightbox-3.1.1.less";
 @import "lightbox/themes/dark.less";
@@ -2214,7 +2213,86 @@ body.single-training-video .type-training-video{
    }
 }
 
+/* ==========================================================================
+   Voice Over Styles
+   These were added by Ryan originally as misc.css
+   ========================================================================== */
 
+.voice-table {
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.voice-table-heading {
+  background-color: #ddd;
+  border: 1px solid #ccc;
+}
+
+.voice-table-heading h2 {
+  font-size: 22px;
+  text-align: center;
+  width: 100%;
+  margin: 20px 0;
+  color: #00599d;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.voice-table-content {
+  display: block;
+  width: 100%;
+}
+
+.voice-table-left {
+  float: left;
+  width: 50%;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.voice-table-right {
+  float: right;
+  width: 50%;
+  border-right: 1px solid #ccc;
+}
+
+.voice-table-right h2, .voice-table-left h2 {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  padding: 10px 0;
+  color: #00599d;
+}
+
+.voice-table-item {
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0 0 15px;
+}
+
+.voice-table-item.even {
+  background-color: #ddd;
+}
+
+.voice-table-item.odd {
+  background-color: #e9e9e9;
+}
+
+.voice-table-item audio {
+  opacity: 0.3;
+}
+
+audio:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 950px) {
+  .voice-table-right, .voice-table-left { float: none; width: 100%; }
+  .voice-table-right { border-left: 1px solid #ccc; }
+}
 
 
 /* ==========================================================================
