@@ -329,7 +329,8 @@ body {
                font-size: 28px;
                line-height: 29px;
                background: none;
-               padding: 22px 20px;
+               padding: 22px 15px;
+               margin: 0;
 
                span{
                   visibility: hidden;
@@ -2244,20 +2245,16 @@ body.single-training-video .type-training-video{
   width: 100%;
 }
 
-.voice-table-left {
-  float: left;
-  width: 50%;
-  border-right: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-}
-
+.voice-table-left,
 .voice-table-right {
-  float: right;
-  width: 50%;
-  border-right: 1px solid #ccc;
+	float: none;
+	width: 100%;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
 }
 
-.voice-table-right h2, .voice-table-left h2 {
+.voice-table-right h2,
+.voice-table-left h2 {
   text-align: center;
   font-size: 14px;
   font-weight: 800;
@@ -2287,11 +2284,6 @@ body.single-training-video .type-training-video{
 
 audio:hover {
   opacity: 0.6;
-}
-
-@media (max-width: 950px) {
-  .voice-table-right, .voice-table-left { float: none; width: 100%; }
-  .voice-table-right { border-left: 1px solid #ccc; }
 }
 
 
